@@ -1,9 +1,78 @@
 ---
 export interface Props {
   title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
 }
 
-const { title = 'DevApplications – Game Studio' } = Astro.props;
+const {
+  title = 'DevApplications | Estudio Indie de Videojuegos Móviles · Barcelona',
+  description = 'DevApplications es un estudio indie de videojuegos móviles creado por Antonio Ramos en Barcelona. Creamos juegos arcade rejugables para Android, sin muros de pago ni sistemas de energía. Descubre Infinite Dark, nuestro Space Survivor Roguelite.',
+  ogImage = '/images/logoDevApplications.png',
+  canonicalUrl = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = 'https://devapplications.xyz';
+const fullCanonical = `${siteUrl}${canonicalUrl}`;
+const fullOgImage = `${siteUrl}${ogImage}`;
+
+const jsonLdOrganization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'DevApplications',
+  url: siteUrl,
+  logo: `${siteUrl}/images/logoDevApplications.png`,
+  description: 'Estudio indie de videojuegos móviles arcade, creado por Antonio Ramos en Barcelona.',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Barcelona, España',
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+    jobTitle: 'Indie Game Developer',
+  },
+  sameAs: [
+    'https://play.google.com/store/apps/developer?id=DevApplications',
+    'mailto:devapplicationsgames@gmail.com',
+  ],
+};
+
+const jsonLdGame = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Infinite Dark',
+  description: 'Space Survivor Roguelite para Android. Sobrevive a oleadas de enemigos, descubre sinergias entre armas y mejora tus estadísticas run a run.',
+  image: `${siteUrl}/images/principal-logo-infinite-dark.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Roguelite', 'Arcade', 'Shooter', 'Survival'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devapplications.infiniteDark',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
+const jsonLdWebSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'DevApplications',
+  url: siteUrl,
+  description,
+  inLanguage: ['es', 'en'],
+};
 ---
 
 <!doctype html>
@@ -11,13 +80,52 @@ const { title = 'DevApplications – Game Studio' } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── Favicon ── -->
     <link rel="icon" type="image/png" href="/images/logoDevApplications.png" />
+    <link rel="apple-touch-icon" href="/images/logoDevApplications.png" />
+
+    <!-- ── Primary meta ── -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Antonio Ramos – DevApplications" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
+    <meta name="theme-color" content="#020514" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="DevApplications – Indie game studio creating high‑energy space and arcade experiences for Android and iOS."
-    />
+
+    <!-- ── Canonical & hreflang ── -->
+    <link rel="canonical" href={fullCanonical} />
+    <link rel="alternate" hreflang="es" href={fullCanonical} />
+    <link rel="alternate" hreflang="en" href={fullCanonical} />
+    <link rel="alternate" hreflang="x-default" href={fullCanonical} />
+
+    <!-- ── Open Graph ── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DevApplications" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={fullCanonical} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DevApplications – Indie Game Studio" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- ── Twitter / X Card ── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+    <meta name="twitter:image:alt" content="DevApplications – Indie Game Studio" />
+
+    <!-- ── Structured Data (JSON-LD) ── -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebSite)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGame)} />
+
+    <!-- ── Fonts ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
