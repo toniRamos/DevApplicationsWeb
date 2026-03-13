@@ -1,0 +1,905 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="DevApplications · Indie Game Studio">
+
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+
+      <!-- Text column -->
+      <div class="hero-content">
+        <div class="label" style="margin-bottom: 1.5rem;">
+          <span class="label-dot"></span>
+          <span data-i18n="es">Estudio Indie &middot; Barcelona</span>
+          <span data-i18n="en">Indie Studio &middot; Barcelona</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span data-i18n="es">Arcade games que no puedes soltar.</span>
+          <span data-i18n="en">Arcade games you can't put down.</span>
+        </h1>
+
+        <p class="hero-desc" data-i18n="es">
+          Creamos juegos móviles rápidos, rejugables y sin trampas. Cada partida es diferente,
+          cada run tiene su propia historia. Sin muros de pago. Sin sistemas de energía.
+        </p>
+        <p class="hero-desc" data-i18n="en">
+          We build fast, replayable mobile games with no tricks. Every run is different,
+          every run tells its own story. No paywalls. No energy systems.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#games" class="btn btn-secondary">
+            <span data-i18n="es">Ver juegos</span>
+            <span data-i18n="en">Our games</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual column: DevApplications logo -->
+      <div class="hero-visual">
+        <div class="hero-artwork">
+          <div class="hero-artwork-glow"></div>
+          <img
+            src="/images/logoDevApplications.png"
+            alt="DevApplications"
+            class="hero-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue-line"></span>
+      <span class="scroll-cue-label"></span>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       GAMES
+  ====================================================== -->
+  <section id="games" class="section">
+    <div class="section-box card">
+
+        <div class="section-header">
+          <div class="label" style="margin-bottom: 0.75rem;">
+            <span class="label-dot"></span>
+            <span data-i18n="es">Catálogo</span>
+            <span data-i18n="en">Catalog</span>
+          </div>
+          <h2 class="section-title">
+            <span data-i18n="es">Nuestros juegos</span>
+            <span data-i18n="en">Our games</span>
+          </h2>
+        </div>
+
+        <div class="games-grid">
+
+          <!-- ── Infinite Dark featured card ── -->
+          <article class="game-featured">
+            <div class="game-featured-artwork">
+              <div class="game-artwork-glow"></div>
+              <img
+                src="/images/principal-logo-infinite-dark.png"
+                alt="Infinite Dark game logo"
+                class="game-artwork-img"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="game-featured-body">
+              <div class="game-meta">
+                <span class="game-genre">Space Survivor Roguelite</span>
+                <span class="game-platform-badge">
+                  <span class="dot-android"></span>
+                  Android
+                </span>
+                <span class="game-platform-badge game-platform-badge--dim">
+                  <span class="dot-ios"></span>
+                  <span data-i18n="es">iOS · Próximamente</span>
+                  <span data-i18n="en">iOS · Coming Soon</span>
+                </span>
+              </div>
+
+              <h3 class="game-title">Infinite Dark</h3>
+
+              <p class="game-desc" data-i18n="es">
+                Sobrevive a oleadas de enemigos cada vez más agresivas, descubre sinergias entre
+                armas que transforman por completo tu estilo de juego y mejora tus estadísticas
+                run a run. Un sistema roguelite honesto que siempre te invita a "una partida más".
+              </p>
+              <p class="game-desc" data-i18n="en">
+                Survive increasingly aggressive enemy waves, discover weapon synergies that
+                completely transform your playstyle and upgrade your stats run after run.
+                An honest roguelite system that always invites you to "one more run".
+              </p>
+
+              <div class="game-tags">
+                <span class="tag" data-i18n="es">Sin muros de pago</span>
+                <span class="tag" data-i18n="en">No paywalls</span>
+                <span class="tag" data-i18n="es">Sin energía</span>
+                <span class="tag" data-i18n="en">No energy</span>
+                <span class="tag" data-i18n="es">Gratis</span>
+                <span class="tag" data-i18n="en">Free to play</span>
+                <span class="tag" data-i18n="es">Roguelite</span>
+                <span class="tag" data-i18n="en">Roguelite</span>
+              </div>
+
+              <a
+                href="https://play.google.com/store/apps/details?id=com.devapplications.infiniteDark"
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-primary"
+                style="align-self: flex-start;"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" />
+                </svg>
+                <span data-i18n="es">Jugar gratis en Google Play</span>
+                <span data-i18n="en">Play free on Google Play</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- ── Coming soon card ── -->
+          <article class="game-upcoming card">
+            <div class="game-upcoming-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4l3 3" />
+              </svg>
+            </div>
+            <h3 class="game-upcoming-title" data-i18n="es">Próximo proyecto</h3>
+            <h3 class="game-upcoming-title" data-i18n="en">Next project</h3>
+            <p class="game-upcoming-desc" data-i18n="es">
+              Estamos prototipando nuevas ideas arcade. Desde shooters más tácticos hasta
+              experiencias puramente arcade. Cada nuevo título tendrá su propia página.
+            </p>
+            <p class="game-upcoming-desc" data-i18n="en">
+              We're prototyping new arcade ideas — from more tactical shooters to pure arcade
+              experiments. Every new title will get its own dedicated page.
+            </p>
+          </article>
+
+        </div>
+      </div>
+  </section>
+
+
+  <!-- ======================================================
+       STUDIO
+  ====================================================== -->
+  <section id="studio" class="section">
+    <div class="section-box card">
+
+        <div class="studio-grid">
+
+          <!-- Left: story -->
+          <div class="studio-story">
+            <div class="label" style="margin-bottom: 0.75rem;">
+              <span class="label-dot"></span>
+              <span data-i18n="es">El estudio</span>
+              <span data-i18n="en">The studio</span>
+            </div>
+            <h2 class="section-title" style="margin-bottom: 1.75rem;">
+              <span data-i18n="es">Un desarrollador.<br />Una visión clara.</span>
+              <span data-i18n="en">One developer.<br />One clear vision.</span>
+            </h2>
+            <p class="studio-text" data-i18n="es">
+              DevApplications es el estudio personal de <strong>Antonio Ramos</strong>, desarrollador
+              indie basado en Barcelona. Cada juego nace con un único objetivo: que sea imposible
+              dejar de jugar.
+            </p>
+            <p class="studio-text" data-i18n="en">
+              DevApplications is the personal studio of <strong>Antonio Ramos</strong>, an indie
+              developer based in Barcelona. Every game is born with a single goal: make it
+              impossible to stop playing.
+            </p>
+            <p class="studio-text" data-i18n="es">
+              Me apasionan las interfaces limpias, la estética retro‑futurista y la sensación de
+              arcade de los recreativos. Esa mezcla inspira tanto el arte visual como el diseño
+              de sistemas de cada juego.
+            </p>
+            <p class="studio-text" data-i18n="en">
+              I'm passionate about clean interfaces, retro‑futuristic aesthetics, and the arcade
+              feeling of old‑school cabinets. That mix inspires both the visuals and systems
+              design of every game.
+            </p>
+
+            <div class="studio-stats">
+              <div class="stat">
+                <span class="stat-value">1</span>
+                <span class="stat-label" data-i18n="es">Juego publicado</span>
+                <span class="stat-label" data-i18n="en">Published game</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-value">Solo</span>
+                <span class="stat-label" data-i18n="es">Desarrollador</span>
+                <span class="stat-label" data-i18n="en">Developer</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-value">BCN</span>
+                <span class="stat-label" data-i18n="es">Barcelona, España</span>
+                <span class="stat-label" data-i18n="en">Barcelona, Spain</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: pillars -->
+          <div class="studio-pillars">
+            <div class="pillar card">
+              <div class="pillar-icon pillar-icon--cyan">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </div>
+              <h4 class="pillar-title" data-i18n="es">Gameplay primero</h4>
+              <h4 class="pillar-title" data-i18n="en">Gameplay first</h4>
+              <p class="pillar-text" data-i18n="es">El diseño parte siempre de que la mecánica principal sea satisfactoria y adictiva por sí misma.</p>
+              <p class="pillar-text" data-i18n="en">Design always starts from making the core mechanic satisfying and addictive on its own.</p>
+            </div>
+
+            <div class="pillar card">
+              <div class="pillar-icon pillar-icon--purple">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h4 class="pillar-title" data-i18n="es">Monetización ética</h4>
+              <h4 class="pillar-title" data-i18n="en">Ethical monetization</h4>
+              <p class="pillar-text" data-i18n="es">Sin dark patterns ni pay‑to‑win. El dinero nunca te da ventaja en el juego.</p>
+              <p class="pillar-text" data-i18n="en">No dark patterns or pay‑to‑win. Money never gives you an in‑game advantage.</p>
+            </div>
+
+            <div class="pillar card">
+              <div class="pillar-icon pillar-icon--blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <h4 class="pillar-title" data-i18n="es">Respeto al jugador</h4>
+              <h4 class="pillar-title" data-i18n="en">Player respect</h4>
+              <p class="pillar-text" data-i18n="es">Cada run dura lo que tú decides. El juego respeta tu tiempo, no lo secuestra.</p>
+              <p class="pillar-text" data-i18n="en">Each run lasts as long as you decide. The game respects your time — it doesn't hold it hostage.</p>
+            </div>
+
+            <div class="pillar card">
+              <div class="pillar-icon pillar-icon--cyan">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg>
+              </div>
+              <h4 class="pillar-title" data-i18n="es">Nativo y rápido</h4>
+              <h4 class="pillar-title" data-i18n="en">Native and fast</h4>
+              <p class="pillar-text" data-i18n="es">Desarrollo nativo Android para máximo rendimiento y controles perfectamente calibrados.</p>
+              <p class="pillar-text" data-i18n="en">Native Android development for maximum performance and perfectly calibrated controls.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+
+  <!-- ======================================================
+       CONTACT
+  ====================================================== -->
+  <section id="contact" class="section section--contact">
+    <div class="section-box card contact-box">
+      <div class="contact-box-glow"></div>
+
+      <div class="contact-inner">
+        <div class="contact-left">
+          <div class="label" style="margin-bottom: 0.75rem;">
+            <span class="label-dot"></span>
+            <span data-i18n="es">Contacto</span>
+            <span data-i18n="en">Contact</span>
+          </div>
+          <h2 class="section-title" style="margin-bottom: 1rem;">
+            <span data-i18n="es">Hablemos.</span>
+            <span data-i18n="en">Let's talk.</span>
+          </h2>
+          <p class="contact-desc" data-i18n="es">
+            ¿Feedback sobre Infinite Dark, una idea de colaboración o simplemente quieres hablar
+            de juegos? Escríbeme — siempre es un placer.
+          </p>
+          <p class="contact-desc" data-i18n="en">
+            Feedback on Infinite Dark, a collaboration idea, or just want to talk games?
+            Drop me a line — always happy to chat.
+          </p>
+        </div>
+
+        <div class="contact-right">
+          <div class="contact-email-block">
+            <span class="contact-email-label" data-i18n="es">Email</span>
+            <span class="contact-email-label" data-i18n="en">Email</span>
+            <a href="mailto:devapplicationsgames@gmail.com" class="contact-email">
+              devapplicationsgames@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+
+<style>
+  /* ====================================================
+     HERO
+  ==================================================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--nav-height);
+  }
+
+  .hero-inner {
+    flex: 1;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr 1fr;
+      padding: 0 2rem;
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 5vw + 0.8rem, 4.75rem);
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(155deg, #ffffff 0%, #c5f3ff 45%, #39ffe3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-soft);
+    max-width: 32rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.72;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-artwork {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-active);
+    background: radial-gradient(ellipse at 40% 30%, rgba(4, 14, 52, 0.95), rgba(2, 5, 20, 0.98));
+    overflow: hidden;
+    box-shadow:
+      0 32px 80px rgba(0, 0, 0, 0.7),
+      inset 0 0 0 1px rgba(2, 5, 20, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-artwork-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 20%, rgba(57, 255, 227, 0.1), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(176, 67, 255, 0.14), transparent 55%);
+    pointer-events: none;
+  }
+
+  .hero-img {
+    position: relative;
+    z-index: 1;
+    width: 120%;
+    height: auto;
+    filter:
+      drop-shadow(0 0 24px rgba(57, 255, 227, 0.5))
+      drop-shadow(0 0 60px rgba(75, 179, 255, 0.35));
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 2.5rem;
+    opacity: 0.45;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-cue {
+      display: flex;
+    }
+  }
+
+  .scroll-cue-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--accent-cyan));
+    animation: cue-pulse 2.2s ease-in-out infinite;
+  }
+
+  .scroll-cue-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  @keyframes cue-pulse {
+    0%, 100% { opacity: 0.35; transform: scaleY(0.85); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+
+  /* ====================================================
+     SECTIONS
+  ==================================================== */
+  .section {
+    padding: 7rem 2rem;
+  }
+
+  .section--contact {
+    padding-bottom: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Card wrapper — same width constraints as .hero-inner */
+  .section-box {
+    max-width: 1160px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-box {
+      padding: 3rem;
+    }
+  }
+
+
+  /* ====================================================
+     GAMES
+  ==================================================== */
+  .games-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .games-grid {
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+    }
+  }
+
+  /* Featured game */
+  .game-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem;
+    border-radius: var(--radius);
+    background: rgba(4, 10, 38, 0.5);
+    border: 1px solid var(--border);
+  }
+
+  @media (min-width: 680px) {
+    .game-featured {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+
+  .game-featured-artwork {
+    border-radius: 14px;
+    background: radial-gradient(ellipse at center, rgba(4, 14, 52, 0.9), rgba(2, 5, 20, 0.98));
+    border: 1px solid var(--border);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .game-artwork-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 20%, rgba(57, 255, 227, 0.09), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(176, 67, 255, 0.11), transparent 55%);
+    pointer-events: none;
+  }
+
+  .game-artwork-img {
+    width: 68%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    filter:
+      drop-shadow(0 0 14px rgba(176, 67, 255, 0.55))
+      drop-shadow(0 0 32px rgba(75, 179, 255, 0.35));
+  }
+
+  .game-featured-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .game-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .game-genre {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  .game-platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--text-soft);
+  }
+
+  .game-platform-badge--dim {
+    opacity: 0.55;
+  }
+
+  .dot-android {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #34a853;
+    flex-shrink: 0;
+  }
+
+  .dot-ios {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .game-title {
+    font-size: 2.1rem;
+    letter-spacing: -0.025em;
+  }
+
+  .game-desc {
+    font-size: 0.94rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+
+  .game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    display: inline-flex;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: rgba(57, 255, 227, 0.06);
+    border: 1px solid rgba(57, 255, 227, 0.18);
+    color: rgba(57, 255, 227, 0.75);
+  }
+
+  /* Upcoming card */
+  .game-upcoming {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-style: dashed;
+    min-height: 300px;
+  }
+
+  .game-upcoming-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(176, 67, 255, 0.07);
+    border: 1px dashed rgba(176, 67, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-purple);
+  }
+
+  .game-upcoming-title {
+    font-size: 1.3rem;
+    letter-spacing: -0.015em;
+  }
+
+  .game-upcoming-desc {
+    font-size: 0.875rem;
+    color: var(--text-soft);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+
+  /* ====================================================
+     STUDIO
+  ==================================================== */
+  .studio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .studio-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .studio-text {
+    font-size: 0.97rem;
+    color: var(--text-soft);
+    line-height: 1.72;
+    margin-bottom: 1.1rem;
+  }
+
+  .studio-text strong {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .studio-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* Pillars grid */
+  .studio-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .pillar {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pillar-icon--cyan {
+    background: rgba(57, 255, 227, 0.09);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(57, 255, 227, 0.15);
+  }
+
+  .pillar-icon--purple {
+    background: rgba(176, 67, 255, 0.09);
+    color: var(--accent-purple);
+    border: 1px solid rgba(176, 67, 255, 0.15);
+  }
+
+  .pillar-icon--blue {
+    background: rgba(75, 179, 255, 0.09);
+    color: var(--accent-blue);
+    border: 1px solid rgba(75, 179, 255, 0.15);
+  }
+
+  .pillar-title {
+    font-size: 0.93rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar-text {
+    font-size: 0.81rem;
+    color: var(--text-soft);
+    line-height: 1.58;
+  }
+
+
+  /* ====================================================
+     CONTACT
+  ==================================================== */
+  .contact-box {
+    position: relative;
+    overflow: hidden;
+    border-color: var(--border-active) !important;
+    box-shadow:
+      0 0 0 1px rgba(57, 255, 227, 0.08),
+      0 24px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(57, 255, 227, 0.1);
+  }
+
+  .contact-box-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 50%, rgba(57, 255, 227, 0.07), transparent),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(176, 67, 255, 0.07), transparent);
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .contact-desc {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.68;
+    margin-bottom: 0;
+  }
+
+  .contact-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .contact-right {
+      justify-content: flex-end;
+    }
+  }
+
+  .contact-email-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.75rem 2rem;
+    border-radius: var(--radius);
+    background: rgba(4, 10, 38, 0.6);
+    border: 1px solid var(--border-active);
+    min-width: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .contact-email-block {
+      width: auto;
+      min-width: 280px;
+    }
+  }
+
+  .contact-email-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .contact-email {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    transition: opacity 0.2s;
+    word-break: break-all;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-email:hover {
+    opacity: 0.75;
+  }
+
+  .contact-cta {
+    align-self: flex-start;
+  }
+</style>
