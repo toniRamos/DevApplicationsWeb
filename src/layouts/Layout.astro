@@ -66,6 +66,38 @@ const jsonLdGame = {
   },
 };
 
+const jsonLdArkanoid = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Arkanoid Classic',
+  description: 'El clásico arcade de romper ladrillos reinventado para móvil. Controla la plataforma, destruye todos los bloques y recoge potenciadores que cambian el ritmo de cada partida.',
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Arcade', 'Breakout', 'Classic'],
+  datePublished: '2014-01-27',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.3',
+    ratingCount: '2380',
+    bestRating: '5',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devApplications.Arkanoidclasicfree',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -91,7 +123,7 @@ const jsonLdWebSite = {
     <meta name="description" content={description} />
     <meta name="author" content="Antonio Ramos – DevApplications" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
+    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
     <meta name="theme-color" content="#020514" />
     <meta name="generator" content={Astro.generator} />
 
@@ -125,6 +157,7 @@ const jsonLdWebSite = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebSite)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdGame)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdArkanoid)} />
 
     <!-- ── Fonts ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

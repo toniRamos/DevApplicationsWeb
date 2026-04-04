@@ -83,6 +83,84 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="games-grid">
 
+          <!-- ── Arkanoid Classic featured card ── -->
+          <article class="game-featured">
+            <div class="game-featured-artwork">
+              <div class="game-artwork-glow"></div>
+              <img
+                src="/images/icon-Arkanoid-classic.png"
+                alt="Arkanoid Classic game logo"
+                class="game-artwork-img game-artwork-img--fill"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="game-featured-body">
+              <div class="game-meta">
+                <span class="game-genre">Classic Arcade · Breakout</span>
+                <span class="game-platform-badge">
+                  <span class="dot-android"></span>
+                  Android
+                </span>
+              </div>
+
+              <h3 class="game-title">Arkanoid Classic</h3>
+
+              <div class="game-highlights">
+                <span class="highlight">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                  4,3 · 2,38K
+                </span>
+                <span class="highlight">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  500K+
+                </span>
+                <span class="highlight">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span data-i18n="es">Desde 2014</span>
+                  <span data-i18n="en">Since 2014</span>
+                </span>
+              </div>
+
+              <p class="game-desc" data-i18n="es">
+                El clásico arcade de romper ladrillos reinventado para móvil. Controla la plataforma,
+                destruye todos los bloques y recoge potenciadores que cambian el ritmo de cada partida.
+                Más de 500.000 descargas y una valoración de 4,3 estrellas avalan más de una década
+                de diversión arcade pura.
+              </p>
+              <p class="game-desc" data-i18n="en">
+                The classic brick-breaking arcade game reimagined for mobile. Control the paddle,
+                destroy every block, and collect power-ups that change the pace of each game.
+                Over 500,000 downloads and a 4.3-star rating back up more than a decade
+                of pure arcade fun.
+              </p>
+
+              <div class="game-tags">
+                <span class="tag" data-i18n="es">Gratis</span>
+                <span class="tag" data-i18n="en">Free to play</span>
+                <span class="tag" data-i18n="es">Arcade clásico</span>
+                <span class="tag" data-i18n="en">Classic arcade</span>
+                <span class="tag" data-i18n="es">Sin muros de pago</span>
+                <span class="tag" data-i18n="en">No paywalls</span>
+                <span class="tag">Breakout</span>
+              </div>
+
+              <a
+                href="https://play.google.com/store/apps/details?id=com.devApplications.Arkanoidclasicfree"
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-primary"
+                style="align-self: flex-start;"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" />
+                </svg>
+                <span data-i18n="es">Jugar gratis en Google Play</span>
+                <span data-i18n="en">Play free on Google Play</span>
+              </a>
+            </div>
+          </article>
+
           <!-- ── Infinite Dark featured card ── -->
           <article class="game-featured">
             <div class="game-featured-artwork">
@@ -216,9 +294,9 @@ import Layout from '../layouts/Layout.astro';
 
             <div class="studio-stats">
               <div class="stat">
-                <span class="stat-value">1</span>
-                <span class="stat-label" data-i18n="es">Juego publicado</span>
-                <span class="stat-label" data-i18n="en">Published game</span>
+                <span class="stat-value">2</span>
+                <span class="stat-label" data-i18n="es">Juegos publicados</span>
+                <span class="stat-label" data-i18n="en">Published games</span>
               </div>
               <div class="stat-divider"></div>
               <div class="stat">
@@ -512,13 +590,6 @@ import Layout from '../layouts/Layout.astro';
     gap: 1.5rem;
   }
 
-  @media (min-width: 900px) {
-    .games-grid {
-      grid-template-columns: 2fr 1fr;
-      align-items: start;
-    }
-  }
-
   /* Featured game */
   .game-featured {
     display: grid;
@@ -566,6 +637,14 @@ import Layout from '../layouts/Layout.astro';
     filter:
       drop-shadow(0 0 14px rgba(176, 67, 255, 0.55))
       drop-shadow(0 0 32px rgba(75, 179, 255, 0.35));
+  }
+
+  .game-artwork-img--fill {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+    filter: none;
   }
 
   .game-featured-body {
@@ -644,6 +723,27 @@ import Layout from '../layouts/Layout.astro';
     background: rgba(57, 255, 227, 0.06);
     border: 1px solid rgba(57, 255, 227, 0.18);
     color: rgba(57, 255, 227, 0.75);
+  }
+
+
+  /* Game highlights (stats badges) */
+  .game-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(176, 67, 255, 0.08);
+    border: 1px solid rgba(176, 67, 255, 0.22);
+    color: rgba(176, 67, 255, 0.85);
   }
 
   /* Upcoming card */
