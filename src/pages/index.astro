@@ -2,1004 +2,970 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout
+  title="DevApplications — Arcade Indie Studio · Barcelona"
+  description="DevApplications es un estudio indie de videojuegos móviles creado por Antonio Ramos en Barcelona. Juegos arcade rejugables para Android, sin muros de pago ni sistemas de energía."
+>
 
-  <!-- ======================================================
-       HERO
-  ====================================================== -->
-  <section id="home" class="hero">
-    <div class="hero-inner">
-
-      <!-- Text column -->
-      <div class="hero-content">
-        <div class="label" style="margin-bottom: 1.5rem;">
-          <span class="label-dot"></span>
-          <span data-i18n="es">Estudio Indie &middot; Barcelona</span>
-          <span data-i18n="en">Indie Studio &middot; Barcelona</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span data-i18n="es">Arcade games que no puedes soltar.</span>
-          <span data-i18n="en">Arcade games you can't put down.</span>
-        </h1>
-
-        <p class="hero-desc" data-i18n="es">
-          Creamos juegos móviles rápidos, rejugables y sin trampas. Cada partida es diferente,
-          cada run tiene su propia historia. Sin muros de pago. Sin sistemas de energía.
-        </p>
-        <p class="hero-desc" data-i18n="en">
-          We build fast, replayable mobile games with no tricks. Every run is different,
-          every run tells its own story. No paywalls. No energy systems.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#games" class="btn btn-secondary">
-            <span data-i18n="es">Ver juegos</span>
-            <span data-i18n="en">Our games</span>
-          </a>
-        </div>
+  <!-- ── HERO ── -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="hero-meta reveal">
+        <span class="eyebrow">
+          <span data-i18n="es">Estudio Indie · Barcelona</span>
+          <span data-i18n="en">Indie Studio · Barcelona</span>
+        </span>
+        <span class="eyebrow-num">EST. 2014 · NO. 02 · 2026</span>
       </div>
 
-      <!-- Visual column: DevApplications logo -->
-      <div class="hero-visual">
-        <div class="hero-artwork">
-          <div class="hero-artwork-glow"></div>
-          <img
-            src="/images/logoDevApplications.png"
-            alt="DevApplications - Estudio indie de videojuegos móviles en Barcelona"
-            class="hero-img"
-            loading="eager"
-          />
-        </div>
-      </div>
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">
+            <span class="line" data-i18n="es">Arcade games</span>
+            <span class="line" data-i18n="en">Arcade games</span>
+            <span class="line" data-i18n="es">que <span class="ital">no puedes</span></span>
+            <span class="line" data-i18n="en">you <span class="ital">can't put</span></span>
+            <span class="line" data-i18n="es"><span class="u">soltar.</span></span>
+            <span class="line" data-i18n="en"><span class="u">down.</span></span>
+          </h1>
 
-    </div>
+          <p class="hero-sub" data-i18n="es">
+            Creamos <strong>juegos móviles</strong> rápidos, rejugables y sin trampas. Cada partida es diferente,
+            cada run tiene su propia historia. <strong>Sin muros de pago.</strong> <strong>Sin sistemas de energía.</strong>
+          </p>
+          <p class="hero-sub" data-i18n="en">
+            We build <strong>fast, replayable mobile games</strong> with no tricks. Every run is different,
+            every run tells its own story. <strong>No paywalls.</strong> <strong>No energy systems.</strong>
+          </p>
 
-    <!-- Scroll indicator -->
-    <div class="scroll-cue" aria-hidden="true">
-      <span class="scroll-cue-line"></span>
-      <span class="scroll-cue-label"></span>
-    </div>
-  </section>
-
-
-  <!-- ======================================================
-       GAMES
-  ====================================================== -->
-  <section id="games" class="section">
-    <div class="section-box card">
-
-        <div class="section-header">
-          <div class="label" style="margin-bottom: 0.75rem;">
-            <span class="label-dot"></span>
-            <span data-i18n="es">Catálogo</span>
-            <span data-i18n="en">Catalog</span>
+          <div class="hero-actions">
+            <a href="#games" class="btn">
+              <span data-i18n="es">Ver juegos</span><span data-i18n="en">Our games</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#studio" class="btn ghost">
+              <span data-i18n="es">Sobre el estudio</span><span data-i18n="en">About the studio</span>
+            </a>
           </div>
-          <h2 class="section-title">
-            <span data-i18n="es">Nuestros juegos</span>
-            <span data-i18n="en">Our games</span>
-          </h2>
+
+          <div class="scroll-cue">
+            <span data-i18n="es">Desplaza para explorar</span>
+            <span data-i18n="en">Scroll to explore</span>
+            <span class="scroll-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </span>
+          </div>
         </div>
 
-        <div class="games-grid">
+        <aside class="hero-card reveal" style="--d:120ms">
+          <div class="hero-card-head">
+            <span>FEATURED · No. 01</span>
+            <span>∘ LIVE</span>
+          </div>
+          <div class="hero-card-body">
+            <img src="/images/logoDevApplications.png" alt="DevApplications logo" loading="eager" />
+          </div>
+          <dl class="hero-card-foot">
+            <div>
+              <dt>Founded</dt>
+              <dd>2014</dd>
+            </div>
+            <div>
+              <dt>Games</dt>
+              <dd>02</dd>
+            </div>
+            <div>
+              <dt>Place</dt>
+              <dd>BCN</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </header>
 
-          <!-- ── Arkanoid Classic featured card ── -->
-          <article class="game-featured">
-            <div class="game-featured-artwork">
-              <div class="game-artwork-glow"></div>
-              <img
-                src="/images/icon-Arkanoid-classic.png"
-                alt="Arkanoid Classic game logo"
-                class="game-artwork-img game-artwork-img--fill"
-                loading="lazy"
-              />
+  <!-- ── GAMES ── -->
+  <section id="games" class="band">
+    <div class="container">
+      <div class="band-head reveal">
+        <div class="band-meta">
+          <span>§ <strong>02</strong> / Catálogo</span>
+          <span data-i18n="es">Dos títulos · Android</span>
+          <span data-i18n="en">Two titles · Android</span>
+        </div>
+        <h2 class="band-title">
+          <span data-i18n="es">Nuestros <em>juegos</em>, uno por uno.</span>
+          <span data-i18n="en">Our <em>games</em>, one by one.</span>
+        </h2>
+      </div>
+
+      <div class="games">
+
+        <!-- Arkanoid Classic -->
+        <article class="game reveal">
+          <div class="game-num">№ 01</div>
+          <div class="game-art">
+            <div class="game-art-corner">
+              <span>ANDROID</span>
+              <span>★ 4.3</span>
+            </div>
+            <img src="/images/icon-Arkanoid-classic.png" alt="Arkanoid Classic" loading="lazy" />
+          </div>
+          <div class="game-body">
+            <div class="game-meta">
+              <span><b data-i18n="es">Género:</b><b data-i18n="en">Genre:</b> Classic Arcade · Breakout</span>
+              <span><span class="dot-android"></span> Android</span>
+              <span data-i18n="es"><b>Desde</b> 2014</span>
+              <span data-i18n="en"><b>Since</b> 2014</span>
+            </div>
+            <h3 class="game-title">Arkanoid Classic</h3>
+
+            <dl class="game-stats">
+              <div>
+                <dt data-i18n="es">Valoración</dt>
+                <dt data-i18n="en">Rating</dt>
+                <dd>★ 4,3 / 5</dd>
+              </div>
+              <div>
+                <dt data-i18n="es">Descargas</dt>
+                <dt data-i18n="en">Downloads</dt>
+                <dd>500K+</dd>
+              </div>
+              <div>
+                <dt data-i18n="es">Reseñas</dt>
+                <dt data-i18n="en">Reviews</dt>
+                <dd>2,38K</dd>
+              </div>
+            </dl>
+
+            <p class="game-desc" data-i18n="es">
+              El clásico arcade de romper ladrillos reinventado para móvil. Controla la plataforma,
+              destruye todos los bloques y recoge potenciadores que cambian el ritmo de cada partida.
+              Más de 500.000 descargas y una valoración de 4,3 estrellas avalan más de una década
+              de diversión arcade pura.
+            </p>
+            <p class="game-desc" data-i18n="en">
+              The classic brick-breaking arcade game reimagined for mobile. Control the paddle,
+              destroy every block, and collect power-ups that change the pace of each game.
+              Over 500,000 downloads and a 4.3-star rating back up more than a decade
+              of pure arcade fun.
+            </p>
+
+            <div class="game-tags">
+              <span class="pill accent" data-i18n="es">Gratis</span>
+              <span class="pill accent" data-i18n="en">Free to play</span>
+              <span class="pill" data-i18n="es">Arcade clásico</span>
+              <span class="pill" data-i18n="en">Classic arcade</span>
+              <span class="pill" data-i18n="es">Sin muros de pago</span>
+              <span class="pill" data-i18n="en">No paywalls</span>
+              <span class="pill">Breakout</span>
             </div>
 
-            <div class="game-featured-body">
-              <div class="game-meta">
-                <span class="game-genre">Classic Arcade · Breakout</span>
-                <span class="game-platform-badge">
-                  <span class="dot-android"></span>
-                  Android
-                </span>
-              </div>
-
-              <h3 class="game-title">Arkanoid Classic</h3>
-
-              <div class="game-highlights">
-                <span class="highlight">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                  4,3 · 2,38K
-                </span>
-                <span class="highlight">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  500K+
-                </span>
-                <span class="highlight">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span data-i18n="es">Desde 2014</span>
-                  <span data-i18n="en">Since 2014</span>
-                </span>
-              </div>
-
-              <p class="game-desc" data-i18n="es">
-                El clásico arcade de romper ladrillos reinventado para móvil. Controla la plataforma,
-                destruye todos los bloques y recoge potenciadores que cambian el ritmo de cada partida.
-                Más de 500.000 descargas y una valoración de 4,3 estrellas avalan más de una década
-                de diversión arcade pura.
-              </p>
-              <p class="game-desc" data-i18n="en">
-                The classic brick-breaking arcade game reimagined for mobile. Control the paddle,
-                destroy every block, and collect power-ups that change the pace of each game.
-                Over 500,000 downloads and a 4.3-star rating back up more than a decade
-                of pure arcade fun.
-              </p>
-
-              <div class="game-tags">
-                <span class="tag" data-i18n="es">Gratis</span>
-                <span class="tag" data-i18n="en">Free to play</span>
-                <span class="tag" data-i18n="es">Arcade clásico</span>
-                <span class="tag" data-i18n="en">Classic arcade</span>
-                <span class="tag" data-i18n="es">Sin muros de pago</span>
-                <span class="tag" data-i18n="en">No paywalls</span>
-                <span class="tag">Breakout</span>
-              </div>
-
+            <div class="game-cta">
               <a
                 href="https://play.google.com/store/apps/details?id=com.devApplications.Arkanoidclasicfree"
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-primary"
-                style="align-self: flex-start;"
+                class="btn"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" />
-                </svg>
-                <span data-i18n="es">Jugar gratis en Google Play</span>
-                <span data-i18n="en">Play free on Google Play</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" /></svg>
+                <span data-i18n="es">Jugar en Google Play</span>
+                <span data-i18n="en">Play on Google Play</span>
               </a>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- ── Infinite Dark featured card ── -->
-          <article class="game-featured">
-            <div class="game-featured-artwork">
-              <div class="game-artwork-glow"></div>
-              <img
-                src="/images/principal-logo-infinite-dark.png"
-                alt="Infinite Dark game logo"
-                class="game-artwork-img"
-                loading="lazy"
-              />
+        <!-- Infinite Dark -->
+        <article class="game reveal">
+          <div class="game-num">№ 02</div>
+          <div class="game-art contain">
+            <div class="game-art-corner">
+              <span>ANDROID</span>
+              <span data-i18n="es">NUEVO</span>
+              <span data-i18n="en">NEW</span>
+            </div>
+            <img src="/images/principal-logo-infinite-dark.png" alt="Infinite Dark" loading="lazy" />
+          </div>
+          <div class="game-body">
+            <div class="game-meta">
+              <span><b data-i18n="es">Género:</b><b data-i18n="en">Genre:</b> Space Survivor Roguelite</span>
+              <span><span class="dot-android"></span> Android</span>
+              <span><span class="dot-ios"></span>
+                <span data-i18n="es">iOS · Próximamente</span>
+                <span data-i18n="en">iOS · Coming Soon</span>
+              </span>
+            </div>
+            <h3 class="game-title">Infinite Dark</h3>
+
+            <dl class="game-stats">
+              <div>
+                <dt data-i18n="es">Formato</dt>
+                <dt data-i18n="en">Format</dt>
+                <dd>Roguelite</dd>
+              </div>
+              <div>
+                <dt data-i18n="es">Partida</dt>
+                <dt data-i18n="en">Session</dt>
+                <dd>5–20′</dd>
+              </div>
+              <div>
+                <dt data-i18n="es">Precio</dt>
+                <dt data-i18n="en">Price</dt>
+                <dd data-i18n="es">Gratis</dd>
+                <dd data-i18n="en">Free</dd>
+              </div>
+            </dl>
+
+            <p class="game-desc" data-i18n="es">
+              Sobrevive a oleadas de enemigos cada vez más agresivas, descubre sinergias entre
+              armas que transforman por completo tu estilo de juego y mejora tus estadísticas
+              run a run. Un sistema roguelite honesto que siempre te invita a "una partida más".
+            </p>
+            <p class="game-desc" data-i18n="en">
+              Survive increasingly aggressive enemy waves, discover weapon synergies that
+              completely transform your playstyle and upgrade your stats run after run.
+              An honest roguelite system that always invites you to "one more run".
+            </p>
+
+            <div class="game-tags">
+              <span class="pill accent" data-i18n="es">Sin muros de pago</span>
+              <span class="pill accent" data-i18n="en">No paywalls</span>
+              <span class="pill" data-i18n="es">Sin energía</span>
+              <span class="pill" data-i18n="en">No energy</span>
+              <span class="pill" data-i18n="es">Gratis</span>
+              <span class="pill" data-i18n="en">Free to play</span>
+              <span class="pill">Roguelite</span>
             </div>
 
-            <div class="game-featured-body">
-              <div class="game-meta">
-                <span class="game-genre">Space Survivor Roguelite</span>
-                <span class="game-platform-badge">
-                  <span class="dot-android"></span>
-                  Android
-                </span>
-                <span class="game-platform-badge game-platform-badge--dim">
-                  <span class="dot-ios"></span>
-                  <span data-i18n="es">iOS · Próximamente</span>
-                  <span data-i18n="en">iOS · Coming Soon</span>
-                </span>
-              </div>
-
-              <h3 class="game-title">Infinite Dark</h3>
-
-              <p class="game-desc" data-i18n="es">
-                Sobrevive a oleadas de enemigos cada vez más agresivas, descubre sinergias entre
-                armas que transforman por completo tu estilo de juego y mejora tus estadísticas
-                run a run. Un sistema roguelite honesto que siempre te invita a "una partida más".
-              </p>
-              <p class="game-desc" data-i18n="en">
-                Survive increasingly aggressive enemy waves, discover weapon synergies that
-                completely transform your playstyle and upgrade your stats run after run.
-                An honest roguelite system that always invites you to "one more run".
-              </p>
-
-              <div class="game-tags">
-                <span class="tag" data-i18n="es">Sin muros de pago</span>
-                <span class="tag" data-i18n="en">No paywalls</span>
-                <span class="tag" data-i18n="es">Sin energía</span>
-                <span class="tag" data-i18n="en">No energy</span>
-                <span class="tag" data-i18n="es">Gratis</span>
-                <span class="tag" data-i18n="en">Free to play</span>
-                <span class="tag" data-i18n="es">Roguelite</span>
-                <span class="tag" data-i18n="en">Roguelite</span>
-              </div>
-
+            <div class="game-cta">
               <a
                 href="https://play.google.com/store/apps/details?id=com.devapplications.infiniteDark"
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-primary"
-                style="align-self: flex-start;"
+                class="btn"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" />
-                </svg>
-                <span data-i18n="es">Jugar gratis en Google Play</span>
-                <span data-i18n="en">Play free on Google Play</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.523 0H6.477L0 12l6.477 12h11.046L24 12 17.523 0z" /></svg>
+                <span data-i18n="es">Jugar en Google Play</span>
+                <span data-i18n="en">Play on Google Play</span>
               </a>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- ── Coming soon card ── -->
-          <article class="game-upcoming card">
-            <div class="game-upcoming-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 8v4l3 3" />
-              </svg>
+        <!-- Upcoming -->
+        <article class="game-upcoming reveal">
+          <div class="game-num">№ 03</div>
+          <div class="game-upcoming-art">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="game-body">
+            <div class="stamp">
+              <span data-i18n="es">En prototipo</span>
+              <span data-i18n="en">In prototype</span>
             </div>
-            <h3 class="game-upcoming-title" data-i18n="es">Próximo proyecto</h3>
-            <h3 class="game-upcoming-title" data-i18n="en">Next project</h3>
-            <p class="game-upcoming-desc" data-i18n="es">
+            <h3 class="game-title serif-italic" data-i18n="es">Próximo proyecto.</h3>
+            <h3 class="game-title serif-italic" data-i18n="en">Next project.</h3>
+            <p class="game-desc" data-i18n="es">
               Estamos prototipando nuevas ideas arcade. Desde shooters más tácticos hasta
               experiencias puramente arcade. Cada nuevo título tendrá su propia página.
             </p>
-            <p class="game-upcoming-desc" data-i18n="en">
+            <p class="game-desc" data-i18n="en">
               We're prototyping new arcade ideas — from more tactical shooters to pure arcade
               experiments. Every new title will get its own dedicated page.
             </p>
-          </article>
+          </div>
+        </article>
 
-        </div>
       </div>
+    </div>
   </section>
 
+  <!-- ── STUDIO ── -->
+  <section id="studio" class="band">
+    <div class="container">
+      <div class="band-head reveal">
+        <div class="band-meta">
+          <span>§ <strong>03</strong> / <span data-i18n="es">El estudio</span><span data-i18n="en">The studio</span></span>
+          <span data-i18n="es">Un desarrollador, una visión</span>
+          <span data-i18n="en">One developer, one vision</span>
+        </div>
+        <h2 class="band-title">
+          <span data-i18n="es">Un desarrollador.<br /><em>Una visión clara.</em></span>
+          <span data-i18n="en">One developer.<br /><em>One clear vision.</em></span>
+        </h2>
+      </div>
 
-  <!-- ======================================================
-       STUDIO
-  ====================================================== -->
-  <section id="studio" class="section">
-    <div class="section-box card">
+      <div class="studio-grid">
+        <div class="studio-story reveal">
+          <p data-i18n="es">
+            DevApplications es el estudio personal de <strong>Antonio Ramos</strong>, desarrollador
+            indie basado en Barcelona. Cada juego nace con un único objetivo: que sea imposible
+            dejar de jugar.
+          </p>
+          <p data-i18n="en">
+            DevApplications is the personal studio of <strong>Antonio Ramos</strong>, an indie
+            developer based in Barcelona. Every game is born with a single goal: make it
+            impossible to stop playing.
+          </p>
+          <p data-i18n="es">
+            Me apasionan las interfaces limpias, la estética retro‑futurista y la sensación de
+            arcade de los recreativos. Esa mezcla inspira tanto el arte visual como el diseño
+            de sistemas de cada juego.
+          </p>
+          <p data-i18n="en">
+            I'm passionate about clean interfaces, retro‑futuristic aesthetics, and the arcade
+            feeling of old‑school cabinets. That mix inspires both the visuals and systems
+            design of every game.
+          </p>
 
-        <div class="studio-grid">
-
-          <!-- Left: story -->
-          <div class="studio-story">
-            <div class="label" style="margin-bottom: 0.75rem;">
-              <span class="label-dot"></span>
-              <span data-i18n="es">El estudio</span>
-              <span data-i18n="en">The studio</span>
+          <div class="studio-stats">
+            <div>
+              <div class="stat-val">02</div>
+              <span class="stat-lab" data-i18n="es">Juegos publicados</span>
+              <span class="stat-lab" data-i18n="en">Published games</span>
             </div>
-            <h2 class="section-title" style="margin-bottom: 1.75rem;">
-              <span data-i18n="es">Un desarrollador.<br />Una visión clara.</span>
-              <span data-i18n="en">One developer.<br />One clear vision.</span>
-            </h2>
-            <p class="studio-text" data-i18n="es">
-              DevApplications es el estudio personal de <strong>Antonio Ramos</strong>, desarrollador
-              indie basado en Barcelona. Cada juego nace con un único objetivo: que sea imposible
-              dejar de jugar.
-            </p>
-            <p class="studio-text" data-i18n="en">
-              DevApplications is the personal studio of <strong>Antonio Ramos</strong>, an indie
-              developer based in Barcelona. Every game is born with a single goal: make it
-              impossible to stop playing.
-            </p>
-            <p class="studio-text" data-i18n="es">
-              Me apasionan las interfaces limpias, la estética retro‑futurista y la sensación de
-              arcade de los recreativos. Esa mezcla inspira tanto el arte visual como el diseño
-              de sistemas de cada juego.
-            </p>
-            <p class="studio-text" data-i18n="en">
-              I'm passionate about clean interfaces, retro‑futuristic aesthetics, and the arcade
-              feeling of old‑school cabinets. That mix inspires both the visuals and systems
-              design of every game.
-            </p>
-
-            <div class="studio-stats">
-              <div class="stat">
-                <span class="stat-value">2</span>
-                <span class="stat-label" data-i18n="es">Juegos publicados</span>
-                <span class="stat-label" data-i18n="en">Published games</span>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat">
-                <span class="stat-value">Solo</span>
-                <span class="stat-label" data-i18n="es">Desarrollador</span>
-                <span class="stat-label" data-i18n="en">Developer</span>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat">
-                <span class="stat-value">BCN</span>
-                <span class="stat-label" data-i18n="es">Barcelona, España</span>
-                <span class="stat-label" data-i18n="en">Barcelona, Spain</span>
-              </div>
+            <div>
+              <div class="stat-val ital">Solo</div>
+              <span class="stat-lab" data-i18n="es">Desarrollador</span>
+              <span class="stat-lab" data-i18n="en">Developer</span>
+            </div>
+            <div>
+              <div class="stat-val">BCN</div>
+              <span class="stat-lab" data-i18n="es">Barcelona, España</span>
+              <span class="stat-lab" data-i18n="en">Barcelona, Spain</span>
             </div>
           </div>
+        </div>
 
-          <!-- Right: pillars -->
-          <div class="studio-pillars">
-            <div class="pillar card">
-              <div class="pillar-icon pillar-icon--cyan">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </div>
-              <h4 class="pillar-title" data-i18n="es">Gameplay primero</h4>
-              <h4 class="pillar-title" data-i18n="en">Gameplay first</h4>
-              <p class="pillar-text" data-i18n="es">El diseño parte siempre de que la mecánica principal sea satisfactoria y adictiva por sí misma.</p>
-              <p class="pillar-text" data-i18n="en">Design always starts from making the core mechanic satisfying and addictive on its own.</p>
-            </div>
-
-            <div class="pillar card">
-              <div class="pillar-icon pillar-icon--purple">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <h4 class="pillar-title" data-i18n="es">Monetización ética</h4>
-              <h4 class="pillar-title" data-i18n="en">Ethical monetization</h4>
-              <p class="pillar-text" data-i18n="es">Sin dark patterns ni pay‑to‑win. El dinero nunca te da ventaja en el juego.</p>
-              <p class="pillar-text" data-i18n="en">No dark patterns or pay‑to‑win. Money never gives you an in‑game advantage.</p>
-            </div>
-
-            <div class="pillar card">
-              <div class="pillar-icon pillar-icon--blue">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-              </div>
-              <h4 class="pillar-title" data-i18n="es">Respeto al jugador</h4>
-              <h4 class="pillar-title" data-i18n="en">Player respect</h4>
-              <p class="pillar-text" data-i18n="es">Cada run dura lo que tú decides. El juego respeta tu tiempo, no lo secuestra.</p>
-              <p class="pillar-text" data-i18n="en">Each run lasts as long as you decide. The game respects your time — it doesn't hold it hostage.</p>
-            </div>
-
-            <div class="pillar card">
-              <div class="pillar-icon pillar-icon--cyan">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <path d="M8 21h8M12 17v4" />
-                </svg>
-              </div>
-              <h4 class="pillar-title" data-i18n="es">Nativo y rápido</h4>
-              <h4 class="pillar-title" data-i18n="en">Native and fast</h4>
-              <p class="pillar-text" data-i18n="es">Desarrollo nativo Android para máximo rendimiento y controles perfectamente calibrados.</p>
-              <p class="pillar-text" data-i18n="en">Native Android development for maximum performance and perfectly calibrated controls.</p>
-            </div>
+        <div class="pillars reveal" style="--d:120ms">
+          <div class="pillar">
+            <span class="pillar-n">01</span>
+            <h4 data-i18n="es"><em>Gameplay</em> primero</h4>
+            <h4 data-i18n="en"><em>Gameplay</em> first</h4>
+            <p data-i18n="es">El diseño parte siempre de que la mecánica principal sea satisfactoria y adictiva por sí misma.</p>
+            <p data-i18n="en">Design always starts from making the core mechanic satisfying and addictive on its own.</p>
           </div>
-
+          <div class="pillar">
+            <span class="pillar-n">02</span>
+            <h4 data-i18n="es">Monetización <em>ética</em></h4>
+            <h4 data-i18n="en">Ethical <em>monetization</em></h4>
+            <p data-i18n="es">Sin dark patterns ni pay‑to‑win. El dinero nunca te da ventaja en el juego.</p>
+            <p data-i18n="en">No dark patterns or pay‑to‑win. Money never gives you an in‑game advantage.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-n">03</span>
+            <h4 data-i18n="es">Respeto al <em>jugador</em></h4>
+            <h4 data-i18n="en">Player <em>respect</em></h4>
+            <p data-i18n="es">Cada run dura lo que tú decides. El juego respeta tu tiempo, no lo secuestra.</p>
+            <p data-i18n="en">Each run lasts as long as you decide. The game respects your time — it doesn't hold it hostage.</p>
+          </div>
+          <div class="pillar">
+            <span class="pillar-n">04</span>
+            <h4 data-i18n="es"><em>Nativo</em> y rápido</h4>
+            <h4 data-i18n="en"><em>Native</em> and fast</h4>
+            <p data-i18n="es">Desarrollo nativo Android para máximo rendimiento y controles perfectamente calibrados.</p>
+            <p data-i18n="en">Native Android development for maximum performance and perfectly calibrated controls.</p>
+          </div>
         </div>
       </div>
+    </div>
   </section>
 
-
-  <!-- ======================================================
-       CONTACT
-  ====================================================== -->
-  <section id="contact" class="section section--contact">
-    <div class="section-box card contact-box">
-      <div class="contact-box-glow"></div>
-
-      <div class="contact-inner">
-        <div class="contact-left">
-          <div class="label" style="margin-bottom: 0.75rem;">
-            <span class="label-dot"></span>
-            <span data-i18n="es">Contacto</span>
-            <span data-i18n="en">Contact</span>
-          </div>
-          <h2 class="section-title" style="margin-bottom: 1rem;">
-            <span data-i18n="es">Hablemos.</span>
-            <span data-i18n="en">Let's talk.</span>
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <div>
+          <span class="eyebrow">
+            <span data-i18n="es">§ 04 / Contacto</span>
+            <span data-i18n="en">§ 04 / Contact</span>
+          </span>
+          <h2>
+            <span data-i18n="es">Hablemos <em>de juegos.</em></span>
+            <span data-i18n="en">Let's <em>talk games.</em></span>
           </h2>
-          <p class="contact-desc" data-i18n="es">
+          <p data-i18n="es">
             ¿Feedback sobre Infinite Dark, una idea de colaboración o simplemente quieres hablar
             de juegos? Escríbeme — siempre es un placer.
           </p>
-          <p class="contact-desc" data-i18n="en">
+          <p data-i18n="en">
             Feedback on Infinite Dark, a collaboration idea, or just want to talk games?
             Drop me a line — always happy to chat.
           </p>
         </div>
 
-        <div class="contact-right">
-          <div class="contact-email-block">
-            <span class="contact-email-label" data-i18n="es">Email</span>
-            <span class="contact-email-label" data-i18n="en">Email</span>
-            <a href="mailto:devapplicationsgames@gmail.com" class="contact-email">
-              devapplicationsgames@gmail.com
+        <div class="contact-card">
+          <div class="contact-card-head">
+            <span>∘ OPEN FOR MAIL</span>
+            <span>BCN</span>
+          </div>
+          <span class="eyebrow" style="margin-top:1rem; display:inline-flex;">
+            <span data-i18n="es">Escríbeme a</span>
+            <span data-i18n="en">Write me at</span>
+          </span>
+          <a href="mailto:devapplicationsgames@gmail.com" class="contact-email">
+            devapplicationsgames@gmail.com
+          </a>
+          <div class="contact-actions">
+            <a href="mailto:devapplicationsgames@gmail.com" class="btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <span data-i18n="es">Enviar email</span>
+              <span data-i18n="en">Send email</span>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/developer?id=DevApplications"
+              target="_blank"
+              rel="noreferrer"
+              class="btn ghost"
+            >
+              Google Play
             </a>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
 </Layout>
 
-
 <style>
-  /* ====================================================
-     HERO
-  ==================================================== */
+  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: var(--nav-height);
+    padding: clamp(2.5rem, 6vw, 5.5rem) 0 clamp(3rem, 6vw, 6rem);
+    position: relative;
   }
-
-  .hero-inner {
-    flex: 1;
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    width: 100%;
+  .hero-meta {
+    display: flex; align-items: center; gap: .9rem 1.5rem;
+    padding-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta .eyebrow-num { flex-shrink: 1; }
+  .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
-    gap: 3.5rem;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
   }
-
   @media (min-width: 900px) {
-    .hero-inner {
-      grid-template-columns: 1fr 1fr;
-      padding: 0 2rem;
-    }
+    .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
   }
 
   .hero-title {
-    font-size: clamp(2.6rem, 5vw + 0.8rem, 4.75rem);
-    letter-spacing: -0.035em;
-    line-height: 1.04;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(155deg, #ffffff 0%, #c5f3ff 45%, #39ffe3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-family: var(--f-display);
+    font-size: clamp(2.6rem, 10.5vw, 9rem);
+    line-height: 0.9;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    margin: 0.2em 0 0;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .hero-title .line { display: block; }
+  .hero-title .ital { font-style: italic; font-weight: 400; color: var(--accent); }
+  .hero-title .u {
+    display: inline-block;
+    position: relative;
+  }
+  .hero-title .u::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: .08em;
+    height: 0.08em;
+    background: var(--accent);
   }
 
-  .hero-desc {
-    font-size: 1.05rem;
-    color: var(--text-soft);
+  .hero-sub {
+    margin-top: 1.8rem;
     max-width: 32rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.72;
+    font-size: clamp(1rem, 1.2vw + .5rem, 1.2rem);
+    color: var(--fg-2);
+    line-height: 1.55;
   }
+  .hero-sub strong { color: var(--fg); font-weight: 500; }
 
   .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.875rem;
+    display: flex; flex-wrap: wrap; gap: .7rem;
+    margin-top: 2rem;
   }
 
-  /* Hero visual */
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-artwork {
+  .hero-card {
+    border: 1px solid var(--fg);
+    background: var(--bg-2);
+    padding: 1rem;
     position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 1;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-active);
-    background: radial-gradient(ellipse at 40% 30%, rgba(4, 14, 52, 0.95), rgba(2, 5, 20, 0.98));
     overflow: hidden;
-    box-shadow:
-      0 32px 80px rgba(0, 0, 0, 0.7),
-      inset 0 0 0 1px rgba(2, 5, 20, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-
-  .hero-artwork-glow {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 25% 20%, rgba(57, 255, 227, 0.1), transparent 55%),
-      radial-gradient(ellipse at 75% 80%, rgba(176, 67, 255, 0.14), transparent 55%);
+  .hero-card::before {
+    content: '';
+    position: absolute; inset: 4px;
+    border: 1px solid var(--line);
     pointer-events: none;
   }
-
-  .hero-img {
+  .hero-card-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 4px 8px 10px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg-3);
     position: relative;
     z-index: 1;
-    width: 120%;
-    height: auto;
-    filter:
-      drop-shadow(0 0 24px rgba(57, 255, 227, 0.5))
-      drop-shadow(0 0 60px rgba(75, 179, 255, 0.35));
   }
-
-  /* Scroll cue */
-  .scroll-cue {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding-bottom: 2.5rem;
-    opacity: 0.45;
+  .hero-card-body {
+    position: relative;
+    aspect-ratio: 1/1;
+    background: var(--bg-3);
+    display: grid; place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
   }
-
-  @media (min-width: 768px) {
-    .scroll-cue {
-      display: flex;
-    }
+  @media (min-width: 900px) {
+    .hero-card-body { aspect-ratio: 4/5; }
   }
-
-  .scroll-cue-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, transparent, var(--accent-cyan));
-    animation: cue-pulse 2.2s ease-in-out infinite;
+  .hero-card-body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, color-mix(in oklab, var(--fg) 5%, transparent) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply;
+    pointer-events: none;
   }
+  :global([data-theme='dark']) .hero-card-body::before { mix-blend-mode: overlay; opacity: .5; }
+  .hero-card-body img {
+    width: 72%; height: auto;
+    filter: drop-shadow(0 8px 30px rgba(0,0,0,.15));
+    position: relative;
+    z-index: 1;
+  }
+  :global([data-theme='dark']) .hero-card-body img { filter: drop-shadow(0 12px 40px rgba(0,0,0,.6)); }
 
-  .scroll-cue-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+  .hero-card-foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-card-foot > div { padding: 4px 8px; border-right: 1px solid var(--line); }
+  .hero-card-foot > div:last-child { border-right: 0; }
+  .hero-card-foot dt {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--accent-cyan);
+    color: var(--fg-3);
+  }
+  .hero-card-foot dd {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 3.5vw, 18px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--fg);
   }
 
-  @keyframes cue-pulse {
-    0%, 100% { opacity: 0.35; transform: scaleY(0.85); }
-    50% { opacity: 1; transform: scaleY(1); }
+  .scroll-cue {
+    margin-top: 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .scroll-arrow {
+    width: 18px; height: 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    animation: arrow 2.2s var(--ease) infinite;
+  }
+  @keyframes arrow {
+    0%, 100% { transform: translateY(0); opacity: .7; }
+    50% { transform: translateY(4px); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-arrow { animation: none; }
   }
 
-
-  /* ====================================================
-     SECTIONS
-  ==================================================== */
-  .section {
-    padding: 7rem 2rem;
-  }
-
-  .section--contact {
-    padding-bottom: 2rem;
-  }
-
-  .section-header {
-    margin-bottom: 2.5rem;
-  }
-
-  /* Card wrapper — same width constraints as .hero-inner */
-  .section-box {
-    max-width: 1160px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .section-box {
-      padding: 3rem;
-    }
-  }
-
-
-  /* ====================================================
-     GAMES
-  ==================================================== */
-  .games-grid {
+  /* ── GAMES ── */
+  .games { display: flex; flex-direction: column; gap: 0; }
+  .game {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    border-top: 1px solid var(--line);
   }
-
-  /* Featured game */
-  .game-featured {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1.75rem;
-    border-radius: var(--radius);
-    background: rgba(4, 10, 38, 0.5);
-    border: 1px solid var(--border);
+  @media (min-width: 900px) {
+    .game { grid-template-columns: 56px 280px 1fr; gap: 2.5rem; align-items: start; }
   }
-
-  @media (min-width: 680px) {
-    .game-featured {
-      grid-template-columns: 200px 1fr;
-    }
+  .game-num {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: .16em;
+    color: var(--fg-3);
   }
-
-  .game-featured-artwork {
-    border-radius: 14px;
-    background: radial-gradient(ellipse at center, rgba(4, 14, 52, 0.9), rgba(2, 5, 20, 0.98));
-    border: 1px solid var(--border);
-    overflow: hidden;
+  .game-art {
     aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid var(--fg);
+    background: var(--bg-2);
     position: relative;
-    flex-shrink: 0;
+    overflow: hidden;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
   }
-
-  .game-artwork-glow {
-    position: absolute;
-    inset: 0;
+  .game-art::before {
+    content: '';
+    position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 25% 20%, rgba(57, 255, 227, 0.09), transparent 55%),
-      radial-gradient(ellipse at 75% 80%, rgba(176, 67, 255, 0.11), transparent 55%);
+      radial-gradient(ellipse at 30% 20%, color-mix(in oklab, var(--accent) 15%, transparent), transparent 60%);
     pointer-events: none;
   }
-
-  .game-artwork-img {
-    width: 68%;
-    height: auto;
-    position: relative;
-    z-index: 1;
-    filter:
-      drop-shadow(0 0 14px rgba(176, 67, 255, 0.55))
-      drop-shadow(0 0 32px rgba(75, 179, 255, 0.35));
-  }
-
-  .game-artwork-img--fill {
-    width: 100%;
-    height: 100%;
+  .game-art img {
+    width: 100%; height: 100%;
     object-fit: cover;
-    border-radius: 13px;
-    filter: none;
   }
-
-  .game-featured-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .game-art.contain img {
+    object-fit: contain;
+    padding: 14%;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,.2));
   }
+  :global([data-theme='dark']) .game-art.contain img { filter: drop-shadow(0 14px 44px rgba(0,0,0,.7)); }
 
-  .game-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .game-genre {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+  .game-art-corner {
+    position: absolute; top: 6px; left: 6px; right: 6px;
+    display: flex; justify-content: space-between;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--accent-cyan);
+    color: var(--bg);
+    background: transparent;
+    mix-blend-mode: difference;
+    z-index: 2;
+  }
+  .game-art-corner span {
+    background: color-mix(in oklab, var(--fg) 80%, transparent);
+    color: var(--bg);
+    padding: 3px 7px;
+    mix-blend-mode: normal;
   }
 
-  .game-platform-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.74rem;
-    font-weight: 500;
-    color: var(--text-soft);
+  .game-body { display: flex; flex-direction: column; gap: 1rem; }
+  .game-meta {
+    display: flex; gap: 1.25rem; flex-wrap: wrap;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--fg-3);
   }
-
-  .game-platform-badge--dim {
-    opacity: 0.55;
-  }
-
-  .dot-android {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
+  .game-meta b { color: var(--fg); font-weight: 600; }
+  .game-meta .dot-android {
+    width: 8px; height: 8px;
     background: #34a853;
-    flex-shrink: 0;
+    border-radius: 2px;
+    display: inline-block;
   }
-
-  .dot-ios {
-    width: 8px;
-    height: 8px;
+  .game-meta .dot-ios {
+    width: 8px; height: 8px;
+    background: var(--fg-3);
     border-radius: 50%;
-    background: var(--text-muted);
-    flex-shrink: 0;
+    display: inline-block;
   }
 
   .game-title {
-    font-size: 2.1rem;
-    letter-spacing: -0.025em;
+    font-family: var(--f-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.035em;
+    line-height: .95;
+    font-weight: 400;
+  }
+
+  .game-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: .25rem 0;
+  }
+  .game-stats > div {
+    padding: .75rem .5rem;
+    border-right: 1px solid var(--line);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .game-stats > div:last-child { border-right: 0; }
+  .game-stats dt {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 2px;
+  }
+  .game-stats dd {
+    font-family: var(--f-display);
+    font-size: clamp(17px, 4.2vw, 22px);
+    font-weight: 500;
+    letter-spacing: -.02em;
+    color: var(--fg);
+    line-height: 1.1;
   }
 
   .game-desc {
-    font-size: 0.94rem;
-    color: var(--text-soft);
-    line-height: 1.7;
-  }
-
-  .game-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    display: inline-flex;
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 500;
-    background: rgba(57, 255, 227, 0.06);
-    border: 1px solid rgba(57, 255, 227, 0.18);
-    color: rgba(57, 255, 227, 0.75);
-  }
-
-
-  /* Game highlights (stats badges) */
-  .game-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-
-  .highlight {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: rgba(176, 67, 255, 0.08);
-    border: 1px solid rgba(176, 67, 255, 0.22);
-    color: rgba(176, 67, 255, 0.85);
-  }
-
-  /* Upcoming card */
-  .game-upcoming {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-style: dashed;
-    min-height: 300px;
-  }
-
-  .game-upcoming-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
-    background: rgba(176, 67, 255, 0.07);
-    border: 1px dashed rgba(176, 67, 255, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-purple);
-  }
-
-  .game-upcoming-title {
-    font-size: 1.3rem;
-    letter-spacing: -0.015em;
-  }
-
-  .game-upcoming-desc {
-    font-size: 0.875rem;
-    color: var(--text-soft);
+    color: var(--fg-2);
+    font-size: 1.02rem;
     line-height: 1.65;
-    flex: 1;
+    max-width: 52ch;
   }
 
+  .game-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .game-cta { margin-top: .5rem; }
 
-  /* ====================================================
-     STUDIO
-  ==================================================== */
+  /* Upcoming */
+  .game-upcoming {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: clamp(2rem, 4vw, 3rem) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--fg);
+  }
+  @media (min-width: 900px) {
+    .game-upcoming { grid-template-columns: 56px 280px 1fr; gap: 2.5rem; align-items: start; }
+  }
+  .stamp {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: 5px 10px 4px;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    transform: rotate(-1.5deg);
+    align-self: flex-start;
+  }
+  .game-upcoming-art {
+    aspect-ratio: 1;
+    border: 1px dashed var(--fg);
+    background: var(--bg-2);
+    display: grid; place-items: center;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
+    color: var(--fg-3);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .game-upcoming-art svg { color: var(--fg-3); opacity: .7; }
+
+  /* ── STUDIO ── */
   .studio-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
   }
-
   @media (min-width: 900px) {
-    .studio-grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
+    .studio-grid { grid-template-columns: 1.1fr 1fr; gap: 5rem; }
   }
 
-  .studio-text {
-    font-size: 0.97rem;
-    color: var(--text-soft);
-    line-height: 1.72;
+  .studio-story { max-width: 44ch; }
+  .studio-story h2 { margin-bottom: 1.5rem; }
+  .studio-story p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--fg-2);
     margin-bottom: 1.1rem;
   }
-
-  .studio-text strong {
-    color: var(--text-main);
-    font-weight: 600;
+  .studio-story p:first-of-type::first-letter {
+    font-family: var(--f-display);
+    font-size: 3.6em;
+    font-weight: 400;
+    float: left;
+    line-height: .85;
+    padding: 0.05em 0.14em 0 0;
+    color: var(--accent);
+    font-style: italic;
+  }
+  @media (min-width: 680px) {
+    .studio-story p:first-of-type::first-letter { font-size: 4.2em; }
+  }
+  .studio-story strong {
+    color: var(--fg);
+    font-weight: 500;
+    font-style: italic;
+    font-family: var(--f-display);
   }
 
   .studio-stats {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .stat-value {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text-main);
-    letter-spacing: -0.02em;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 36px;
-    background: var(--border);
-    flex-shrink: 0;
-  }
-
-  /* Pillars grid */
-  .studio-pillars {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--fg);
+  }
+  .studio-stats > div {
+    padding: .75rem 1rem;
+    border-right: 1px solid var(--line);
+  }
+  .studio-stats > div:last-child { border-right: 0; }
+  .stat-val {
+    font-family: var(--f-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -.03em;
+    line-height: 1;
+  }
+  .stat-val.ital { font-style: italic; color: var(--accent); }
+  .stat-lab {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--fg-3);
   }
 
-  .pillar {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .pillar-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .pillar-icon--cyan {
-    background: rgba(57, 255, 227, 0.09);
-    color: var(--accent-cyan);
-    border: 1px solid rgba(57, 255, 227, 0.15);
-  }
-
-  .pillar-icon--purple {
-    background: rgba(176, 67, 255, 0.09);
-    color: var(--accent-purple);
-    border: 1px solid rgba(176, 67, 255, 0.15);
-  }
-
-  .pillar-icon--blue {
-    background: rgba(75, 179, 255, 0.09);
-    color: var(--accent-blue);
-    border: 1px solid rgba(75, 179, 255, 0.15);
-  }
-
-  .pillar-title {
-    font-size: 0.93rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .pillar-text {
-    font-size: 0.81rem;
-    color: var(--text-soft);
-    line-height: 1.58;
-  }
-
-
-  /* ====================================================
-     CONTACT
-  ==================================================== */
-  .contact-box {
-    position: relative;
-    overflow: hidden;
-    border-color: var(--border-active) !important;
-    box-shadow:
-      0 0 0 1px rgba(57, 255, 227, 0.08),
-      0 24px 60px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(57, 255, 227, 0.1);
-  }
-
-  .contact-box-glow {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 90% 50%, rgba(57, 255, 227, 0.07), transparent),
-      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(176, 67, 255, 0.07), transparent);
-    pointer-events: none;
-  }
-
-  .contact-inner {
-    position: relative;
-    z-index: 1;
+  .pillars {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 0;
+    border: 1px solid var(--fg);
   }
-
-  @media (min-width: 768px) {
-    .contact-inner {
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-    }
+  @media (min-width: 560px) {
+    .pillars { grid-template-columns: 1fr 1fr; }
   }
-
-  .contact-desc {
-    font-size: 1rem;
-    color: var(--text-soft);
-    line-height: 1.68;
-    margin-bottom: 0;
-  }
-
-  .contact-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  @media (min-width: 768px) {
-    .contact-right {
-      justify-content: flex-end;
-    }
-  }
-
-  .contact-email-block {
+  .pillar {
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--line);
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    padding: 1.75rem 2rem;
-    border-radius: var(--radius);
-    background: rgba(4, 10, 38, 0.6);
-    border: 1px solid var(--border-active);
-    min-width: 0;
-    width: 100%;
+    gap: .65rem;
+    min-height: 200px;
+    background: var(--bg);
+    position: relative;
+    transition: background var(--t-fast);
+  }
+  .pillar:hover { background: var(--bg-2); }
+  .pillar:last-child { border-bottom: 0; }
+  @media (min-width: 560px) {
+    .pillar { border-right: 1px solid var(--line); min-height: 220px; }
+    .pillar:nth-child(2n) { border-right: 0; }
+    .pillar:nth-last-child(-n+2) { border-bottom: 0; }
+    .pillar:last-child { border-bottom: 0; }
+  }
+  .pillar-n {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--fg-3);
+  }
+  .pillar h4 {
+    font-family: var(--f-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 1.05;
+  }
+  .pillar h4 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .pillar p {
+    font-size: .9rem;
+    color: var(--fg-2);
+    line-height: 1.6;
   }
 
-  @media (min-width: 768px) {
-    .contact-email-block {
-      width: auto;
-      min-width: 280px;
-    }
+  /* ── CONTACT ── */
+  .contact {
+    padding: clamp(4rem, 8vw, 8rem) 0 clamp(2rem, 4vw, 4rem);
+    border-top: 1px solid var(--fg);
+    background:
+      repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in oklab, var(--accent) 3%, transparent) 22px 23px);
+  }
+  :global([data-theme='dark']) .contact {
+    background:
+      repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in oklab, var(--accent) 5%, transparent) 22px 23px);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+  @media (min-width: 900px) {
+    .contact-grid { grid-template-columns: 1.3fr 1fr; }
+  }
+  .contact h2 {
+    font-family: var(--f-display);
+    font-size: clamp(2.4rem, 8vw, 6rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: .92;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-wrap: break-word;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact p {
+    color: var(--fg-2);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 40ch;
   }
 
-  .contact-email-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+  .contact-card {
+    border: 1px solid var(--fg);
+    background: var(--bg);
+    padding: 1.5rem;
+    position: relative;
+  }
+  .contact-card-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--fg-3);
   }
-
   .contact-email {
     display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--accent-cyan);
-    transition: opacity 0.2s;
+    margin-top: 1.25rem;
+    font-family: var(--f-display);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -.02em;
+    color: var(--fg);
     word-break: break-all;
-    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
-
-  .contact-email:hover {
-    opacity: 0.75;
-  }
-
-  .contact-cta {
-    align-self: flex-start;
+  .contact-email:hover { color: var(--accent); }
+  .contact-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
   }
 </style>
