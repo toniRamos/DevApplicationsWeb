@@ -98,6 +98,32 @@ const jsonLdArkanoid = {
   },
 };
 
+const jsonLdIdleBackpack = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Idle Backpack Survivor',
+  description: 'Inventory Idle RPG para Android. Gestiona tu mochila, combina equipamiento y sobrevive a oleadas de enemigos optimizando el inventario y descubriendo sinergias entre objetos.',
+  image: `${siteUrl}/images/idle-backpack-survivor.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Idle', 'RPG', 'Inventory', 'Survival'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devApplications.IdleBackpackSurvivor',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -123,7 +149,7 @@ const jsonLdWebSite = {
     <meta name="description" content={description} />
     <meta name="author" content="Antonio Ramos – DevApplications" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
+    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
     <meta name="theme-color" content="#ede6d6" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#12110f" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
@@ -159,6 +185,7 @@ const jsonLdWebSite = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdGame)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdArkanoid)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBackpack)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -664,11 +691,12 @@ const jsonLdWebSite = {
 
         // ─── Ticker
         const tickerItems = [
-          '02 Games published',
+          '03 Games published',
           'Based in Barcelona',
           'Est. 2014',
           '500K+ downloads · Arkanoid Classic',
           'Infinite Dark · Out now',
+          'Idle Backpack Survivor · Out now',
           'No paywalls',
           'No energy systems',
           'Android native',
