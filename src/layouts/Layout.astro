@@ -124,6 +124,58 @@ const jsonLdIdleBackpack = {
   },
 };
 
+const jsonLdX2NumberMerge = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'X2 Number Merge',
+  description: 'Puzzle de fusión numérica tipo 2048 para Android. Combina, fusiona y multiplica bloques numéricos, supera bosses en el modo historia y persigue tu récord en el modo infinito.',
+  image: `${siteUrl}/images/x2-number-merge.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Puzzle', 'Merge', 'Numbers', 'Casual'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devApplications.xtwonumbermerge',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
+const jsonLdGeometrySmash = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Geometry Smash',
+  description: 'Bubble shooter roguelite de física para Android. Lanza bolas, rompe bloques geométricos, encadena combos y sobrevive con perks aleatorios, bolas especiales y bosses únicos.',
+  image: `${siteUrl}/images/geometry-smash.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Arcade', 'Roguelite', 'Bubble Shooter', 'Physics'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.DevApplications.GeometrySmash',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -149,7 +201,7 @@ const jsonLdWebSite = {
     <meta name="description" content={description} />
     <meta name="author" content="Antonio Ramos – DevApplications" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
+    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, X2 Number Merge, number merge, puzzle 2048, Geometry Smash, bubble shooter roguelite, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
     <meta name="theme-color" content="#ede6d6" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#12110f" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
@@ -186,6 +238,8 @@ const jsonLdWebSite = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdGame)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdArkanoid)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBackpack)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdX2NumberMerge)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGeometrySmash)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -691,10 +745,12 @@ const jsonLdWebSite = {
 
         // ─── Ticker
         const tickerItems = [
-          '03 Games published',
+          '05 Games published',
           'Based in Barcelona',
           'Est. 2014',
           '500K+ downloads · Arkanoid Classic',
+          'X2 Number Merge · Out now',
+          'Geometry Smash · Out now',
           'Infinite Dark · Out now',
           'Idle Backpack Survivor · Out now',
           'No paywalls',
