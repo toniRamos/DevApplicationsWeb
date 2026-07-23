@@ -176,6 +176,58 @@ const jsonLdGeometrySmash = {
   },
 };
 
+const jsonLdStarhail = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Bullet Hell: Starhail',
+  description: 'Shmup vertical bullet hell de neón para Android. Esquiva tormentas de balas con una mano, elige entre 9 naves únicas, derrota 6 bosses épicos y encadena combos para batir tu récord.',
+  image: `${siteUrl}/images/bullet-hell-starhail.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Arcade', 'Shmup', 'Bullet Hell', 'Shooter'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devApplications.starhail',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
+const jsonLdIdleBrickBreaker = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'Idle Brick Breaker',
+  description: 'Brick breaker idle incremental para Android. Las bolas rebotan y rompen ladrillos solas: fusiona bolas, mejora daño y velocidad, derrota bosses y progresa con Prestigio y Singularidad incluso offline.',
+  image: `${siteUrl}/images/idle-brick-breaker.png`,
+  operatingSystem: 'Android',
+  applicationCategory: 'GameApplication',
+  genre: ['Idle', 'Incremental', 'Arcade', 'Casual'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://play.google.com/store/apps/details?id=com.devapplications.idlebrickbreaker',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DevApplications',
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Antonio Ramos',
+  },
+};
+
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -201,7 +253,7 @@ const jsonLdWebSite = {
     <meta name="description" content={description} />
     <meta name="author" content="Antonio Ramos – DevApplications" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, X2 Number Merge, number merge, puzzle 2048, Geometry Smash, bubble shooter roguelite, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
+    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Bullet Hell Starhail, bullet hell, shmup, danmaku, space shooter, Idle Brick Breaker, idle brick breaker, incremental game, X2 Number Merge, number merge, puzzle 2048, Geometry Smash, bubble shooter roguelite, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
     <meta name="theme-color" content="#ede6d6" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#12110f" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
@@ -240,6 +292,8 @@ const jsonLdWebSite = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBackpack)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdX2NumberMerge)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdGeometrySmash)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdStarhail)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBrickBreaker)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
