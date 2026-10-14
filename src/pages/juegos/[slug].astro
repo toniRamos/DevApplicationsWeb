@@ -1,0 +1,12 @@
+---
+import GamePage from '../../components/GamePage.astro';
+import { games, type Game } from '../../data/games';
+
+export function getStaticPaths() {
+  return games.map((game) => ({ params: { slug: game.slug }, props: { game } }));
+}
+
+const { game } = Astro.props as { game: Game };
+---
+
+<GamePage lang="es" game={game} />

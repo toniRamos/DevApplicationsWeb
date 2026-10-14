@@ -1,534 +1,53 @@
 ---
+import type { Lang } from '../data/games';
+import { EMAIL, PLAY_DEVELOPER_URL, SITE_URL, locales, routes, t } from '../i18n/ui';
+
 export interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
-  canonicalUrl?: string;
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Path of this same page in each language, used for canonical and hreflang. */
+  alternates: Record<Lang, string>;
+  ogImage?: { src: string; width: number; height: number; alt: string };
+  ogType?: 'website' | 'article';
+  jsonLd: object;
 }
 
 const {
-  title = 'DevApplications | Estudio Indie de Videojuegos Móviles · Barcelona',
-  description = 'DevApplications es un estudio indie de videojuegos móviles creado por Antonio Ramos en Barcelona. Creamos juegos arcade rejugables para Android, sin muros de pago ni sistemas de energía. Descubre Infinite Dark, nuestro Space Survivor Roguelite.',
-  ogImage = '/images/logoDevApplications.png',
-  canonicalUrl = Astro.url.pathname,
+  lang,
+  title,
+  description,
+  alternates,
+  ogImage = { src: '/images/logoDevApplications.png', width: 1536, height: 1024, alt: 'DevApplications' },
+  ogType = 'website',
+  jsonLd,
 } = Astro.props;
 
-const siteUrl = 'https://devapplications.xyz';
-const fullCanonical = `${siteUrl}${canonicalUrl}`;
-const fullOgImage = `${siteUrl}${ogImage}`;
-
-const jsonLdOrganization = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'DevApplications',
-  url: siteUrl,
-  logo: `${siteUrl}/images/logoDevApplications.png`,
-  description: 'Estudio indie de videojuegos móviles arcade, creado por Antonio Ramos en Barcelona.',
-  foundingDate: '2024',
-  foundingLocation: {
-    '@type': 'Place',
-    name: 'Barcelona, España',
-  },
-  founder: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-    jobTitle: 'Indie Game Developer',
-  },
-  sameAs: [
-    'https://play.google.com/store/apps/developer?id=DevApplications',
-    'mailto:devapplicationsgames@gmail.com',
-  ],
-};
-
-const jsonLdGame = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Infinite Dark',
-  description: 'Space Survivor Roguelite para Android. Sobrevive a oleadas de enemigos, descubre sinergias entre armas y mejora tus estadísticas run a run.',
-  image: `${siteUrl}/images/principal-logo-infinite-dark.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Roguelite', 'Arcade', 'Shooter', 'Survival'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.infiniteDark',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdArkanoid = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Arkanoid Classic',
-  description: 'El clásico arcade de romper ladrillos reinventado para móvil. Controla la plataforma, destruye todos los bloques y recoge potenciadores que cambian el ritmo de cada partida.',
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Arcade', 'Breakout', 'Classic'],
-  datePublished: '2014-01-27',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.3',
-    ratingCount: '2380',
-    bestRating: '5',
-  },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devApplications.Arkanoidclasicfree',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdIdleBackpack = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Idle Backpack Survivor',
-  description: 'Inventory Idle RPG para Android. Gestiona tu mochila, combina equipamiento y sobrevive a oleadas de enemigos optimizando el inventario y descubriendo sinergias entre objetos.',
-  image: `${siteUrl}/images/idle-backpack-survivor.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Idle', 'RPG', 'Inventory', 'Survival'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devApplications.IdleBackpackSurvivor',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdX2NumberMerge = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'X2 Number Merge',
-  description: 'Puzzle de fusión numérica tipo 2048 para Android. Combina, fusiona y multiplica bloques numéricos, supera bosses en el modo historia y persigue tu récord en el modo infinito.',
-  image: `${siteUrl}/images/x2-number-merge.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Merge', 'Numbers', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devApplications.xtwonumbermerge',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdGeometrySmash = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Geometry Smash',
-  description: 'Bubble shooter roguelite de física para Android. Lanza bolas, rompe bloques geométricos, encadena combos y sobrevive con perks aleatorios, bolas especiales y bosses únicos.',
-  image: `${siteUrl}/images/geometry-smash.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Arcade', 'Roguelite', 'Bubble Shooter', 'Physics'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.DevApplications.GeometrySmash',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdStarhail = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Bullet Hell: Starhail',
-  description: 'Shmup vertical bullet hell de neón para Android. Esquiva tormentas de balas con una mano, elige entre 9 naves únicas, derrota 6 bosses épicos y encadena combos para batir tu récord.',
-  image: `${siteUrl}/images/bullet-hell-starhail.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Arcade', 'Shmup', 'Bullet Hell', 'Shooter'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devApplications.starhail',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdIdleBrickBreaker = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Idle Brick Breaker',
-  description: 'Brick breaker idle incremental para Android. Las bolas rebotan y rompen ladrillos solas: fusiona bolas, mejora daño y velocidad, derrota bosses y progresa con Prestigio y Singularidad incluso offline.',
-  image: `${siteUrl}/images/idle-brick-breaker.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Idle', 'Incremental', 'Arcade', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.idlebrickbreaker',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdMinesweeperClassic = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Minesweeper Classic Offline',
-  description: 'Buscaminas clásico para Android: tres dificultades hasta 30×16 con 99 minas, primer toque seguro, reto diario y totalmente offline.',
-  image: `${siteUrl}/images/minesweeper-classic.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Logic', 'Classic'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.buscaminasclasico',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdAirHockeyClassic = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Air Hockey Classic & Arcade',
-  description: 'Air hockey para Android con IA justa, 23 niveles arcade con mesas que cambian de forma, 7 power-ups, modo 2 jugadores sin anuncios y reto diario.',
-  image: `${siteUrl}/images/air-hockey-classic.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Arcade', 'Sports', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.airhockeyclassic',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdChineseCheckers = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Chinese Checkers Classic Halma',
-  description: 'Damas chinas (Halma) para Android: de 2 a 6 jugadores en un mismo móvil, torneo de cinco rivales, partida rápida y reto diario, totalmente offline.',
-  image: `${siteUrl}/images/chinese-checkers.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Board Game', 'Strategy'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.damaschinas',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdMancala = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Mancala Kalah: Congklak',
-  description: 'Mancala para Android con cuatro reglamentos reales: Kalah, Oware, Congklak y Sungka. Seis niveles de IA, torneo de ocho rivales, 2 jugadores en el mismo móvil y reto diario.',
-  image: `${siteUrl}/images/mancala.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Board Game', 'Strategy'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.mancala',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdHitori = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Hitori - Logic Puzzle',
-  description: 'Hitori para Android: puzzle lógico japonés con solución única por deducción, cinco tamaños hasta 15×15, cuatro dificultades, pistas que enseñan y reto diario.',
-  image: `${siteUrl}/images/hitori.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Logic'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.hitori',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdVexillology = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Vexillology: Flag Color Quiz',
-  description: 'Quiz de banderas para Android donde la bandera nunca se muestra: adivina el país por sus colores, un recorte, una descripción o detectando falsificaciones. 6 modos y 2.715 preguntas sobre 195 banderas.',
-  image: `${siteUrl}/images/vexillology.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Trivia', 'Educational', 'Quiz'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.vexilologia',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdBaghChal = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Bagh Chal - Tigers & Goats',
-  description: 'Bagh Chal para Android, el juego de mesa de Nepal de tigres y cabras. Juega cualquiera de los dos bandos contra seis niveles de IA o a 2 jugadores en el mismo móvil, con reto diario.',
-  image: `${siteUrl}/images/bagh-chal.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Board Game', 'Strategy'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.baghchal',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdShutTheBox = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Shut the Box Classic',
-  description: 'Shut the Box para Android: el clásico juego de dados con caja de 9 y 12 fichas, 2 jugadores en un mismo móvil, seis niveles de IA y reto diario.',
-  image: `${siteUrl}/images/shut-the-box.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Board Game', 'Dice', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.shutthebox',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdHanoiTower = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Hanoi Tower: Disc Puzzle',
-  description: 'Torre de Hanói para Android con modo de cuatro postes. Cada movimiento se mide contra el mínimo demostrado, 24 niveles seleccionados a mano y 60 puzzles de solución perfecta.',
-  image: `${siteUrl}/images/hanoi-tower.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Logic', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.hanoi',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdKillerSudoku = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Killer Sudoku: No Coins',
-  description: 'Killer sudoku clásico para Android sin monedas ni suscripciones. 12 tableros con tres estilos de jaula y cuatro dificultades, solución única verificada por solver, pistas que explican la deducción y anuncios que nunca interrumpen un puzzle.',
-  image: `${siteUrl}/images/killer-sudoku.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Sudoku', 'Logic'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.killersudoku',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdTentsAndTrees = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: 'Tents and Trees: No Coins',
-  description: 'Puzzle lógico de tiendas y árboles para Android, sin monedas ni desbloqueos. Cinco tamaños de 6×6 a 15×15, cuatro dificultades, solución única verificada por solver, pistas que explican la deducción y reto diario.',
-  image: `${siteUrl}/images/tents-and-trees.png`,
-  operatingSystem: 'Android',
-  applicationCategory: 'GameApplication',
-  genre: ['Puzzle', 'Logic', 'Casual'],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://play.google.com/store/apps/details?id=com.devapplications.tentsandtrees',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DevApplications',
-  },
-  author: {
-    '@type': 'Person',
-    name: 'Antonio Ramos',
-  },
-};
-
-const jsonLdWebSite = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'DevApplications',
-  url: siteUrl,
-  description,
-  inLanguage: ['es', 'en'],
-};
+const s = t(lang);
+const otherLang: Lang = lang === 'es' ? 'en' : 'es';
+const abs = (path: string) => `${SITE_URL}${path}`;
+const canonical = abs(alternates[lang]);
+const home = routes.home(lang);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locales[lang].htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Theme before first paint: saved choice, else the system preference -->
+    <script is:inline>
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('devapps-theme'); } catch (e) {}
+        if (theme === 'paper') theme = 'light';
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -539,123 +58,95 @@ const jsonLdWebSite = {
     <meta name="description" content={description} />
     <meta name="author" content="Antonio Ramos – DevApplications" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="DevApplications, indie game studio, videojuegos móviles, juegos Android, Tents and Trees, tents puzzle, Killer Sudoku, sudoku, Hanoi Tower, tower of hanoi, Shut the Box, dice game, Bagh Chal, tigers and goats, Vexillology, flag quiz, Hitori, logic puzzle, Mancala, Kalah, Congklak, Oware, Chinese Checkers, Halma, damas chinas, Air Hockey, air hockey arcade, Minesweeper, buscaminas, Bullet Hell Starhail, bullet hell, shmup, danmaku, space shooter, Idle Brick Breaker, idle brick breaker, incremental game, X2 Number Merge, number merge, puzzle 2048, Geometry Smash, bubble shooter roguelite, Infinite Dark, Space Survivor Roguelite, Arkanoid Classic, breakout, Idle Backpack Survivor, idle RPG, inventory game, arcade game, roguelite, Barcelona, estudio videojuegos, mobile games" />
-    <meta name="theme-color" content="#ede6d6" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#12110f" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E0F13" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical & hreflang -->
-    <link rel="canonical" href={fullCanonical} />
-    <link rel="alternate" hreflang="es" href={fullCanonical} />
-    <link rel="alternate" hreflang="en" href={fullCanonical} />
-    <link rel="alternate" hreflang="x-default" href={fullCanonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={abs(alternates.es)} />
+    <link rel="alternate" hreflang="en" href={abs(alternates.en)} />
+    <link rel="alternate" hreflang="x-default" href={abs(alternates.es)} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="DevApplications" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={fullCanonical} />
-    <meta property="og:image" content={fullOgImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="DevApplications – Indie Game Studio" />
-    <meta property="og:locale" content="es_ES" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(ogImage.src)} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
+    <meta property="og:locale" content={locales[lang].ogLocale} />
+    <meta property="og:locale:alternate" content={locales[otherLang].ogLocale} />
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={fullOgImage} />
-    <meta name="twitter:image:alt" content="DevApplications – Indie Game Studio" />
+    <meta name="twitter:image" content={abs(ogImage.src)} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebSite)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGame)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdArkanoid)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBackpack)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdX2NumberMerge)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGeometrySmash)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdStarhail)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdIdleBrickBreaker)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdMinesweeperClassic)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdAirHockeyClassic)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdChineseCheckers)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdMancala)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdHitori)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdVexillology)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdBaghChal)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdShutTheBox)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdHanoiTower)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdKillerSudoku)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdTentsAndTrees)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Big+Shoulders+Display:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
 
     <style is:global>
       :root {
-        /* type */
-        --f-display-serif: 'Fraunces', 'Instrument Serif', Georgia, serif;
-        --f-display-grotesk: 'Space Grotesk', system-ui, sans-serif;
-        --f-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-        --f-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
-        --f-display: var(--f-display-serif);
+        --f-display: 'Big Shoulders Display', 'Archivo Narrow', sans-serif;
+        --f-body: 'Archivo', system-ui, sans-serif;
 
-        /* paper theme (default) */
-        --paper: #ede6d6;
-        --paper-2: #e3dbc8;
-        --paper-3: #d8cfb8;
-        --ink: #151310;
-        --ink-2: #3a342c;
-        --ink-3: #6c6558;
-        --rule: #cabea0;
-        --rule-2: #b7a982;
+        /* light (default) */
+        --bg: #FFFFFF;
+        --surface: #F2F3F6;
+        --surface-2: #E8EAEF;
+        --card: #FFFFFF;
+        --line: #D9DCE3;
+        --line-strong: #B9BEC9;
+        --fg: #0E0F13;
+        --fg-2: #4B5160;
+        --btn-bg: #0E0F13;
+        --btn-fg: #FFFFFF;
+        --shadow: 0 12px 28px rgba(14, 15, 19, .08);
+        --logo-plate: #0E0F13;
 
-        --bg: var(--paper);
-        --bg-2: var(--paper-2);
-        --bg-3: var(--paper-3);
-        --fg: var(--ink);
-        --fg-2: var(--ink-2);
-        --fg-3: var(--ink-3);
-        --line: var(--rule);
-        --line-2: var(--rule-2);
+        /* accent: lime, always as a fill with dark ink on top */
+        --lime: #C8FF2E;
+        --lime-hover: #B6F000;
+        --on-lime: #0E0F13;
+        --frame: #0E0F13;
 
-        /* accent — vermilion */
-        --accent: oklch(0.6 0.19 28);
-        --accent-soft: oklch(0.92 0.06 28);
-        --accent-ink: oklch(0.35 0.14 28);
-
-        --radius: 4px;
-        --radius-lg: 8px;
-        --nav-h: 64px;
         --max: 1240px;
-
-        --ease: cubic-bezier(.2,.7,.2,1);
-        --t-fast: 160ms var(--ease);
-        --t-med: 320ms var(--ease);
-        --t-slow: 620ms var(--ease);
+        --gutter: 24px;
+        --radius: 12px;
+        --ease: cubic-bezier(.2, .7, .2, 1);
+        color-scheme: light;
       }
 
-      [data-theme='dark'] {
-        --bg: #12110f;
-        --bg-2: #1a1815;
-        --bg-3: #23201b;
-        --fg: #f1eadb;
-        --fg-2: #c6bfae;
-        --fg-3: #8f887a;
-        --line: #3a3630;
-        --line-2: #56503f;
+      :root[data-theme='dark'] {
+        --bg: #0E0F13;
+        --surface: #17191F;
+        --surface-2: #1F222A;
+        --card: #17191F;
+        --line: #2A2E37;
+        --line-strong: #454B58;
+        --fg: #F2F3F5;
+        --fg-2: #A7ACB8;
+        --btn-bg: #F2F3F5;
+        --btn-fg: #0E0F13;
+        --shadow: 0 12px 28px rgba(0, 0, 0, .45);
+        --logo-plate: transparent;
+        --frame: #000000;
+        color-scheme: dark;
       }
-
-      [data-display='grotesk'] { --f-display: var(--f-display-grotesk); }
 
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
@@ -663,542 +154,239 @@ const jsonLdWebSite = {
         font-family: var(--f-body);
         background: var(--bg);
         color: var(--fg);
+        line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-        line-height: 1.55;
-        font-size: 16px;
-        font-feature-settings: 'ss01', 'ss02';
+        transition: background 200ms var(--ease), color 200ms var(--ease);
       }
-
       a { color: inherit; text-decoration: none; }
       img { display: block; max-width: 100%; }
-
-      /* Paper texture overlays */
-      body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          radial-gradient(ellipse 60% 40% at 20% 0%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 70%),
-          radial-gradient(ellipse 50% 50% at 90% 100%, color-mix(in oklab, var(--accent) 4%, transparent), transparent 70%);
-        mix-blend-mode: multiply;
-        opacity: .9;
-      }
-      [data-theme='dark'] body::before { mix-blend-mode: screen; opacity: .55; }
-
-      body::after {
-        content: '';
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        opacity: .5;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-        mix-blend-mode: multiply;
-      }
-      [data-theme='dark'] body::after { opacity: .35; mix-blend-mode: overlay; }
-
-      body > * { position: relative; z-index: 1; }
-
-      h1, h2, h3, h4 {
-        font-family: var(--f-display);
-        font-weight: 500;
-        line-height: 1;
-        letter-spacing: -0.02em;
-        color: var(--fg);
-      }
-      .display { font-family: var(--f-display); font-weight: 400; font-style: italic; }
-      .serif-italic { font-family: var(--f-display); font-style: italic; font-weight: 400; }
-
-      /* ── Ticker ── */
-      .ticker {
-        position: relative;
-        z-index: 2;
-        border-bottom: 1px solid var(--line);
-        background: var(--bg);
-        overflow: hidden;
-        height: 34px;
-        display: flex;
-        align-items: center;
-      }
-      .ticker-track {
-        display: flex;
-        gap: 3rem;
-        white-space: nowrap;
-        animation: ticker 60s linear infinite;
-        font-family: var(--f-mono);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--fg-2);
-        padding-left: 3rem;
-      }
-      .ticker-track span { display: inline-flex; align-items: center; gap: .6rem; }
-      .ticker-track i { font-style: normal; color: var(--accent); font-size: 8px; transform: translateY(-2px); }
-      @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      button { font: inherit; color: inherit; }
+      :focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
       @media (prefers-reduced-motion: reduce) {
-        .ticker-track { animation: none; }
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; animation: none !important; }
       }
 
-      /* ── Nav ── */
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        height: var(--nav-h);
-        background: color-mix(in oklab, var(--bg) 92%, transparent);
-        backdrop-filter: blur(10px) saturate(120%);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav-in {
-        max-width: var(--max);
-        height: 100%;
-        margin: 0 auto;
-        padding: 0 clamp(.75rem, 3vw, 2rem);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: .75rem;
-      }
-      .brand { display: flex; align-items: center; gap: .65rem; }
-      .brand-mark {
-        width: 34px; height: 34px;
-        border: 1px solid var(--fg);
-        background: var(--fg);
-        color: var(--bg);
-        display: grid; place-items: center;
+      .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+      .display {
         font-family: var(--f-display);
-        font-weight: 600;
-        font-size: 15px;
-        letter-spacing: -0.02em;
-      }
-      .brand-name {
-        font-family: var(--f-display);
-        font-size: clamp(15px, 4.2vw, 18px);
-        font-weight: 500;
-        letter-spacing: -0.015em;
-        white-space: nowrap;
-      }
-      .brand-name em { font-style: italic; color: var(--accent); font-weight: 400; }
-
-      .nav-links { display: none; gap: 2px; align-items: center; }
-      @media (min-width: 860px) { .nav-links { display: flex; } }
-      .nav-a {
-        font-family: var(--f-mono);
-        font-size: 11px;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: var(--fg-2);
-        padding: 8px 12px;
-        border-radius: 999px;
-        transition: color var(--t-fast), background var(--t-fast);
-        position: relative;
+        line-height: .9;
+        letter-spacing: -.005em;
       }
-      .nav-a:hover { color: var(--fg); }
-      .nav-a[data-active='true'] { color: var(--fg); }
-      .nav-a[data-active='true']::after {
-        content: '';
-        position: absolute;
-        left: 12px; right: 12px; bottom: 4px;
-        height: 1px;
-        background: var(--accent);
+      .mark {
+        background: var(--lime);
+        color: var(--on-lime);
+        padding: 0 .08em;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
       }
-
-      .nav-actions { display: flex; align-items: center; gap: .5rem; }
-      .lang-toggle {
-        display: flex;
-        align-items: center;
-        border: 1px solid var(--line-2);
-        border-radius: 999px;
-        overflow: hidden;
-        background: var(--bg-2);
-      }
-      .lang-btn {
-        font-family: var(--f-mono);
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: .08em;
-        padding: 6px 10px;
-        border: 0;
-        background: transparent;
-        color: var(--fg-2);
-        cursor: pointer;
-      }
-      .lang-btn[data-active='true'] {
-        background: var(--fg);
-        color: var(--bg);
-      }
-
-      .theme-toggle {
-        width: 34px; height: 34px;
-        border: 1px solid var(--line-2);
-        border-radius: 999px;
-        background: var(--bg-2);
-        color: var(--fg-2);
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-        transition: color var(--t-fast), border-color var(--t-fast);
-      }
-      .theme-toggle:hover { color: var(--fg); border-color: var(--fg); }
-      .theme-toggle .icon-sun { display: none; }
-      .theme-toggle .icon-moon { display: block; }
-      [data-theme='dark'] .theme-toggle .icon-sun { display: block; }
-      [data-theme='dark'] .theme-toggle .icon-moon { display: none; }
-
-      /* ── Shared ── */
-      .container { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
-
-      .eyebrow {
-        font-family: var(--f-mono);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--fg-2);
-        display: inline-flex;
-        align-items: center;
-        gap: .6rem;
-      }
-      .eyebrow::before {
-        content: '';
-        width: 22px; height: 1px;
-        background: var(--accent);
-        display: inline-block;
-      }
-      .eyebrow-num {
-        font-family: var(--f-mono);
-        font-size: 11px;
-        letter-spacing: 0.16em;
-        color: var(--fg-3);
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: .4rem;
-        padding: 4px 10px;
-        border: 1px solid var(--line-2);
-        border-radius: 999px;
-        background: var(--bg-2);
-        font-family: var(--f-mono);
-        font-size: 11px;
-        letter-spacing: 0.06em;
-        color: var(--fg-2);
-        white-space: nowrap;
-      }
-      .pill.solid { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-      .pill.accent {
-        background: var(--accent-soft);
-        border-color: color-mix(in oklab, var(--accent) 40%, transparent);
-        color: var(--accent-ink);
-      }
+      .muted { color: var(--fg-2); }
 
       /* buttons */
       .btn {
         display: inline-flex;
         align-items: center;
-        gap: .55rem;
-        font-family: var(--f-mono);
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 12px 18px;
-        border-radius: 999px;
-        border: 1px solid var(--fg);
-        background: var(--fg);
-        color: var(--bg);
-        transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 26px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        border: 0;
         cursor: pointer;
+        transition: transform 140ms var(--ease), background 140ms var(--ease), color 140ms var(--ease);
       }
-      .btn:hover {
-        transform: translateY(-2px);
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-      }
-      [data-theme='dark'] .btn:hover { color: #fff; }
-      .btn.ghost { background: transparent; color: var(--fg); }
-      .btn.ghost:hover {
-        background: var(--fg);
-        color: var(--bg);
-        border-color: var(--fg);
-      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn-primary { background: var(--btn-bg); color: var(--btn-fg); }
+      .btn-primary:hover { background: var(--lime); color: var(--on-lime); }
+      .btn-lime { background: var(--lime); color: var(--on-lime); }
+      .btn-lime:hover { background: var(--lime-hover); }
+      .btn-ink { background: #0E0F13; color: #FFFFFF; }
+      .btn-ink:hover { background: #2A2E37; }
 
-      /* ── Section frame ── */
-      section.band {
-        border-top: 1px solid var(--fg);
-        padding: clamp(3rem, 6vw, 6rem) 0;
-        position: relative;
-      }
-      .band-head {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding-bottom: clamp(2rem, 4vw, 3rem);
-      }
-      @media (min-width: 900px) {
-        .band-head {
-          grid-template-columns: 180px 1fr;
-          gap: 2rem;
-          align-items: start;
-        }
-      }
-      .band-meta {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-        font-family: var(--f-mono);
+      .tag-new {
+        display: inline-block;
+        background: var(--lime);
+        color: var(--on-lime);
+        font-weight: 800;
         font-size: 11px;
-        letter-spacing: .16em;
+        padding: 2px 7px;
+        border-radius: 5px;
         text-transform: uppercase;
-        color: var(--fg-3);
-        padding-top: .5rem;
+        letter-spacing: .04em;
       }
-      .band-meta strong { color: var(--accent); font-weight: 600; }
-      .band-title {
-        font-family: var(--f-display);
-        font-size: clamp(2rem, 5vw, 3.75rem);
-        line-height: .96;
-        letter-spacing: -0.035em;
-        font-weight: 400;
-        max-width: 24ch;
-      }
-      .band-title em { font-style: italic; color: var(--accent); font-weight: 400; }
 
-      /* ── Footer ── */
-      .foot {
-        border-top: 1px solid var(--fg);
-        padding: 2rem 0;
-        background: var(--bg);
+      /* game card (home catalog + related games) */
+      .card {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 18px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        transition: transform 160ms var(--ease), border-color 160ms var(--ease), box-shadow 160ms var(--ease);
       }
-      .foot-in {
+      .card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: var(--shadow); }
+      .card-icon { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+      .card-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+      .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      .card-cat {
+        color: var(--fg-2);
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+      }
+      .card-title { font-size: 18px; font-weight: 700; line-height: 1.25; }
+      .card-short { color: var(--fg-2); font-size: 15px; line-height: 1.5; }
+
+      /* header */
+      .site-head { border-bottom: 1px solid var(--line); background: var(--bg); }
+      .nav {
         max-width: var(--max);
         margin: 0 auto;
-        padding: 0 clamp(1rem, 3vw, 2rem);
+        padding: 12px var(--gutter);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 6px 12px;
+        margin-left: -12px;
+        border-radius: 10px;
+        background: var(--logo-plate);
+      }
+      .brand img { height: 44px; width: auto; }
+      .nav-links { display: flex; gap: 28px; }
+      .nav-link {
+        color: var(--fg-2);
+        font-weight: 600;
+        font-size: 15px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .nav-link:hover { color: var(--fg); }
+      .nav-actions { display: flex; align-items: center; gap: 10px; }
+      .theme-toggle {
+        width: 44px; height: 44px;
+        display: grid; place-items: center;
+        border-radius: 999px;
+        border: 1.5px solid var(--line);
+        background: transparent;
+        cursor: pointer;
+        color: var(--fg);
+      }
+      .theme-toggle:hover { border-color: var(--fg); }
+      .theme-toggle .icon-sun { display: none; }
+      [data-theme='dark'] .theme-toggle .icon-sun { display: block; }
+      [data-theme='dark'] .theme-toggle .icon-moon { display: none; }
+      .lang {
+        display: flex;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        padding: 3px;
+      }
+      .lang a {
+        min-width: 44px;
+        min-height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        color: var(--fg-2);
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .lang a[aria-current='page'] { background: var(--btn-bg); color: var(--btn-fg); }
+      .lang a:not([aria-current]):hover { color: var(--fg); }
+      @media (max-width: 720px) {
+        .nav-links { display: none; }
+        .brand img { height: 34px; }
+      }
+
+      /* footer */
+      .site-foot { border-top: 1px solid var(--line); }
+      .site-foot-in {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 20px var(--gutter);
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 8px 32px;
         justify-content: space-between;
         align-items: center;
-        font-family: var(--f-mono);
-        font-size: 11px;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        color: var(--fg-3);
+        color: var(--fg-2);
+        font-size: 14px;
       }
-      .foot a { color: var(--fg-2); transition: color var(--t-fast); }
-      .foot a:hover { color: var(--accent); }
-      .foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-      /* ── i18n ── */
-      [data-i18n] { display: inline; }
-      body[data-lang='es'] [data-i18n='en'],
-      body[data-lang='en'] [data-i18n='es'] { display: none !important; }
-
-      /* fade-in */
-      .reveal {
-        opacity: 0;
-        transform: translateY(14px);
-        transition: opacity 620ms var(--ease), transform 620ms var(--ease);
-        transition-delay: var(--d, 0ms);
-      }
-      .reveal.in {
-        opacity: 1;
-        transform: none;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .reveal { opacity: 1; transform: none; transition: none; }
-      }
-
-      /* print */
-      @media print {
-        body::before, body::after, .nav, .ticker { display: none !important; }
-      }
+      .site-foot-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
+      .site-foot-links a { color: var(--fg); min-height: 44px; display: inline-flex; align-items: center; }
+      .site-foot-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
     </style>
   </head>
-  <body data-lang="es" data-theme="paper">
-
-    <!-- Ticker -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track" id="ticker-track"></div>
-    </div>
-
-    <!-- Nav -->
-    <nav class="nav">
-      <div class="nav-in">
-        <a href="#home" class="brand">
-          <span class="brand-mark">D</span>
-          <span class="brand-name">Dev<em>Applications</em></span>
+  <body>
+    <header class="site-head">
+      <nav class="nav" aria-label={s.navLabel}>
+        <a href={home} class="brand">
+          <img src="/images/brand/logo-nav.webp" alt="DevApplications" width="475" height="120" />
         </a>
         <div class="nav-links">
-          <a href="#home" class="nav-a" data-nav-link data-section="home" data-active="true">
-            <span data-i18n="es">Inicio</span><span data-i18n="en">Home</span>
-          </a>
-          <a href="#games" class="nav-a" data-nav-link data-section="games">
-            <span data-i18n="es">Juegos</span><span data-i18n="en">Games</span>
-          </a>
-          <a href="#studio" class="nav-a" data-nav-link data-section="studio">
-            <span data-i18n="es">Estudio</span><span data-i18n="en">Studio</span>
-          </a>
-          <a href="#contact" class="nav-a" data-nav-link data-section="contact">
-            <span data-i18n="es">Contacto</span><span data-i18n="en">Contact</span>
-          </a>
+          <a class="nav-link" href={`${home}#games`}>{s.nav.games}</a>
+          <a class="nav-link" href={`${home}#studio`}>{s.nav.studio}</a>
+          <a class="nav-link" href={`${home}#contact`}>{s.nav.contact}</a>
         </div>
         <div class="nav-actions">
-          <button
-            type="button"
-            class="theme-toggle"
-            id="theme-toggle"
-            aria-label="Toggle theme"
-            title="Toggle light/dark"
-          >
-            <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label={s.themeToggle} title={s.themeToggle}>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
-            <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
             </svg>
           </button>
-          <div class="lang-toggle" aria-label="Language selector">
-            <button type="button" class="lang-btn" data-lang-switch="es" data-active="true">ES</button>
-            <button type="button" class="lang-btn" data-lang-switch="en">EN</button>
+          <div class="lang" role="group" aria-label={s.langLabel}>
+            {(['es', 'en'] as Lang[]).map((l) => (
+              <a
+                href={alternates[l]}
+                hreflang={l}
+                lang={l}
+                aria-current={l === lang ? 'page' : undefined}
+                title={l === lang ? undefined : s.switchTo}
+              >{l.toUpperCase()}</a>
+            ))}
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <slot />
 
-    <footer class="foot">
-      <div class="foot-in">
-        <span>
-          <span data-i18n="es">Hecho en Barcelona · © {new Date().getFullYear()} DevApplications</span>
-          <span data-i18n="en">Made in Barcelona · © {new Date().getFullYear()} DevApplications</span>
-        </span>
-        <div class="foot-links">
-          <a href="mailto:devapplicationsgames@gmail.com">devapplicationsgames@gmail.com</a>
-          <a
-            href="https://play.google.com/store/apps/developer?id=DevApplications"
-            target="_blank"
-            rel="noreferrer"
-          >Google Play</a>
+    <footer class="site-foot">
+      <div class="site-foot-in">
+        <span>© {new Date().getFullYear()} DevApplications · {s.footer.made}</span>
+        <div class="site-foot-links">
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <a href={PLAY_DEVELOPER_URL} target="_blank" rel="noreferrer">Google Play</a>
         </div>
       </div>
     </footer>
 
     <script>
-      (function () {
-        const body = document.body;
-
-        // ─── Ticker
-        const tickerItems = [
-          '05 Games published',
-          'Based in Barcelona',
-          'Est. 2014',
-          '500K+ downloads · Arkanoid Classic',
-          'X2 Number Merge · Out now',
-          'Geometry Smash · Out now',
-          'Infinite Dark · Out now',
-          'Idle Backpack Survivor · Out now',
-          'No paywalls',
-          'No energy systems',
-          'Android native',
-          'One developer · One vision',
-          'devapplicationsgames@gmail.com',
-        ];
-        const track = document.getElementById('ticker-track');
-        if (track) {
-          const html = tickerItems.map((t) => `<span><i>✦</i>${t}</span>`).join('');
-          track.innerHTML = html + html;
-        }
-
-        // ─── Language
-        const langBtns = document.querySelectorAll<HTMLButtonElement>('[data-lang-switch]');
-        const storedLang = localStorage.getItem('devapps-lang');
-        applyLang(storedLang === 'en' || storedLang === 'es' ? storedLang : 'es');
-        langBtns.forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const v = btn.getAttribute('data-lang-switch') || 'es';
-            applyLang(v);
-          });
-        });
-        function applyLang(lang: string) {
-          body.setAttribute('data-lang', lang);
-          try { localStorage.setItem('devapps-lang', lang); } catch (e) {}
-          langBtns.forEach((btn) => {
-            btn.setAttribute(
-              'data-active',
-              btn.getAttribute('data-lang-switch') === lang ? 'true' : 'false'
-            );
-          });
-        }
-
-        // ─── Theme toggle (paper / dark)
-        const themeBtn = document.getElementById('theme-toggle');
-        const storedTheme = localStorage.getItem('devapps-theme');
-        const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-        const initialTheme =
-          storedTheme === 'dark' || storedTheme === 'paper'
-            ? storedTheme
-            : prefersDark
-              ? 'dark'
-              : 'paper';
-        applyTheme(initialTheme);
-        themeBtn?.addEventListener('click', () => {
-          const curr = body.getAttribute('data-theme') === 'dark' ? 'dark' : 'paper';
-          applyTheme(curr === 'dark' ? 'paper' : 'dark');
-        });
-        function applyTheme(theme: string) {
-          body.setAttribute('data-theme', theme);
-          try { localStorage.setItem('devapps-theme', theme); } catch (e) {}
-        }
-
-        // ─── Active nav on scroll
-        const sections = ['home', 'games', 'studio', 'contact']
-          .map((id) => document.getElementById(id))
-          .filter((el): el is HTMLElement => !!el);
-        const navLinks = document.querySelectorAll<HTMLElement>('[data-nav-link]');
-
-        if ('IntersectionObserver' in window && sections.length) {
-          const obs = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((e) => {
-                if (!e.isIntersecting) return;
-                navLinks.forEach((l) => {
-                  l.setAttribute(
-                    'data-active',
-                    l.getAttribute('data-section') === e.target.id ? 'true' : 'false'
-                  );
-                });
-              });
-            },
-            { threshold: 0.28 }
-          );
-          sections.forEach((s) => obs.observe(s));
-        }
-
-        // ─── Reveal on scroll
-        if ('IntersectionObserver' in window) {
-          const ro = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((e) => {
-                if (e.isIntersecting) {
-                  e.target.classList.add('in');
-                  ro.unobserve(e.target);
-                }
-              });
-            },
-            { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
-          );
-          document.querySelectorAll('.reveal').forEach((el) => ro.observe(el));
-        } else {
-          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
-        }
-      })();
+      const root = document.documentElement;
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('devapps-theme', next); } catch (e) {}
+      });
     </script>
   </body>
 </html>

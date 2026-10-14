@@ -1,0 +1,401 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { games, iconUrl, isNew, playUrl, type Category, type Game, type Lang } from '../data/games';
+import { EMAIL, FOUNDED, categoryLabel, fill, routes, t } from '../i18n/ui';
+import { homeJsonLd } from '../lib/jsonld';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = t(lang);
+const count = games.length;
+const latest = games[0];
+const arkanoid = games.find((g) => g.slug === 'arkanoid-classic')!;
+const rating = arkanoid.rating!.value.toLocaleString(lang);
+
+const categories: Category[] = ['puzzle', 'board', 'arcade', 'idle'];
+const filters = [
+  { id: 'all', label: s.catalog.all, count },
+  ...categories.map((c) => ({ id: c, label: categoryLabel[c][lang], count: games.filter((g) => g.category === c).length })),
+];
+
+/** Big cards with a screenshot: the newest releases and the most downloaded ones. */
+const isFeatured = (g: Game) => isNew(g) || Number(g.downloads.replace(/[^\d]/g, '')) >= 100;
+---
+
+<Layout
+  lang={lang}
+  title={s.metaTitle}
+  description={fill(s.metaDescription, { count })}
+  alternates={{ es: routes.home('es'), en: routes.home('en') }}
+  jsonLd={homeJsonLd(lang)}
+>
+  <main>
+    <!-- HERO -->
+    <section class="container hero">
+      <div class="hero-copy">
+        <p class="hero-eyebrow muted">{fill(s.hero.eyebrow, { year: FOUNDED })}</p>
+        <h1 class="display hero-title">{s.hero.title} <span class="mark">{s.hero.titleMark}</span></h1>
+        <p class="hero-sub muted">{s.hero.sub}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#games">{fill(s.hero.ctaGames, { count })}</a>
+          <a class="btn btn-lime" href="#studio">{s.hero.ctaStudio}</a>
+        </div>
+      </div>
+
+      <a class="hero-show" href={routes.game(lang, latest)}>
+        <div class="phone">
+          <img
+            src={latest.shots[0].src}
+            width={latest.shots[0].width}
+            height={latest.shots[0].height}
+            alt={fill(s.hero.latestAlt, { title: latest.title[lang] })}
+            fetchpriority="high"
+          />
+        </div>
+        <div class="hero-latest">
+          <img src={iconUrl(latest)} alt="" width="512" height="512" />
+          <div>
+            <span class="tag-new">{s.catalog.newBadge}</span>
+            <span class="hero-latest-title">{latest.title[lang]}</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- PROOF -->
+    <section class="proof-band" aria-label="DevApplications">
+      <div class="container proof">
+        <div><span class="proof-num"><span class="mark">{count}</span></span><span class="muted">{s.proof.games}</span></div>
+        <div><span class="proof-num">500K+</span><span class="muted">{s.proof.downloads}</span></div>
+        <div><span class="proof-num">{rating}★</span><span class="muted">{s.proof.rating}</span></div>
+        <div><span class="proof-num">{FOUNDED}</span><span class="muted">{s.proof.since}</span></div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="games" class="catalog">
+      <div class="container">
+        <div class="catalog-head">
+          <h2 class="display catalog-title">{s.catalog.title}</h2>
+          <div class="filters" role="group" aria-label={s.catalog.filterLabel}>
+            {filters.map((f) => (
+              <button type="button" class="filter" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
+                {f.label} <span class="filter-count">{f.count}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <ul class="grid">
+          {games.map((game) => (
+            <li class:list={['grid-item', { featured: isFeatured(game) }]} data-category={game.category}>
+              <a class:list={['card', { 'card-featured': isFeatured(game) }]} href={routes.game(lang, game)}>
+                {isFeatured(game) && (
+                  <img
+                    class="card-shot"
+                    src={game.shots[0].src}
+                    width={game.shots[0].width}
+                    height={game.shots[0].height}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                <div class="card-row">
+                  <img class="card-icon" src={iconUrl(game)} alt="" width="512" height="512" loading="lazy" decoding="async" />
+                  <div class="card-body">
+                    <div class="card-meta">
+                      <span class="card-cat">{categoryLabel[game.category][lang]}</span>
+                      {isNew(game) && <span class="tag-new">{s.catalog.newBadge}</span>}
+                    </div>
+                    <h3 class="card-title">{game.title[lang]}</h3>
+                    <p class="card-short">{game.short[lang]}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section class="container spot-wrap" aria-label={arkanoid.title[lang]}>
+      <div class="spot">
+        <div class="spot-copy">
+          <span class="spot-eyebrow">{fill(s.spotlight.eyebrow, { year: FOUNDED })}</span>
+          <h2 class="display spot-title">{fill(s.spotlight.title, { rating })}</h2>
+          <p class="spot-text">{arkanoid.title[lang]}. {arkanoid.short[lang]}</p>
+          <div class="spot-actions">
+            <img src={iconUrl(arkanoid)} alt="" width="512" height="512" loading="lazy" />
+            <a class="btn btn-ink" href={routes.game(lang, arkanoid)}>{s.game.about}</a>
+            <a class="spot-play" href={playUrl(arkanoid)} target="_blank" rel="noreferrer">{s.game.download}</a>
+          </div>
+        </div>
+        <div class="spot-show">
+          <div class="phone phone-tilt">
+            <img
+              src={arkanoid.shots[0].src}
+              width={arkanoid.shots[0].width}
+              height={arkanoid.shots[0].height}
+              alt={fill(s.game.screenshotAlt, { n: 1, title: arkanoid.title[lang] })}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="container principles-wrap" aria-labelledby="principles">
+      <h2 id="principles" class="display section-title">{s.principlesTitle}</h2>
+      <div class="principles">
+        {s.principles.map((p, i) => (
+          <div class:list={['principle', { first: i === 0 }]}>
+            <span class="principle-n">{i === 0 ? <span class="mark">01</span> : String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.title}</h3>
+            <p class="muted">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- STUDIO -->
+    <section id="studio" class="studio-band">
+      <div class="container studio">
+        <h2 class="display studio-title">{fill(s.studio.title, { count })}</h2>
+        <div class="studio-copy">
+          {s.studio.body.map((p) => <p class="muted">{p}</p>)}
+          <ul class="strip" aria-hidden="true">
+            {games.map((g) => (
+              <li><img src={iconUrl(g)} alt="" width="512" height="512" loading="lazy" decoding="async" /></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-band">
+      <div class="container contact">
+        <p class="contact-eyebrow muted">{s.contact.title}</p>
+        <h2 class="display contact-title">{s.contact.text}</h2>
+        <a class="btn btn-primary" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Category filter: every card is in the HTML; this only hides the others.
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const items = document.querySelectorAll<HTMLElement>('[data-category]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      items.forEach((item) => {
+        item.hidden = filter !== 'all' && item.dataset.category !== filter;
+      });
+    })
+  );
+</script>
+
+<style>
+  /* HERO */
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 64px;
+  }
+  .hero-copy { flex: 999 1 520px; min-width: 0; }
+  .hero-eyebrow { margin-bottom: 22px; font-weight: 600; font-size: 15px; }
+  .hero-title { font-size: clamp(64px, 10vw, 132px); line-height: .88; }
+  .hero-sub { margin-top: 28px; max-width: 560px; font-size: 19px; line-height: 1.55; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+  .hero-show {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .phone {
+    width: 270px;
+    padding: 10px;
+    background: var(--frame);
+    border-radius: 40px;
+  }
+  :global([data-theme='dark']) .phone { box-shadow: 0 0 0 1px var(--line); }
+  .phone img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 405 / 720;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .hero-latest {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 300px;
+    padding: 12px 16px 12px 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 160ms var(--ease);
+  }
+  .hero-show:hover .hero-latest { border-color: var(--line-strong); }
+  .hero-latest img { width: 52px; height: 52px; border-radius: 12px; }
+  .hero-latest div { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+  .hero-latest-title { font-weight: 700; font-size: 16px; }
+
+  /* PROOF */
+  .proof-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 32px 20px;
+    border-left: 1px solid var(--line);
+    font-size: 15px;
+  }
+  .proof > div:first-child { border-left: 0; padding-left: 0; }
+  .proof-num { font-family: var(--f-display); font-weight: 800; font-size: 56px; line-height: 1; }
+  @media (max-width: 900px) {
+    .proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .proof > div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .proof > div:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  }
+
+  /* CATALOG */
+  .catalog { background: var(--surface); border-bottom: 1px solid var(--line); }
+  .catalog > .container { padding-top: 96px; padding-bottom: 72px; }
+  .catalog-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .catalog-title { font-size: clamp(48px, 7vw, 88px); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    background: var(--card);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: border-color 140ms var(--ease);
+  }
+  .filter:hover { border-color: var(--fg); }
+  .filter[aria-pressed='true'] { background: var(--lime); color: var(--on-lime); border-color: var(--on-lime); }
+  .filter-count { font-weight: 600; color: var(--fg-2); }
+  .filter[aria-pressed='true'] .filter-count { color: var(--on-lime); opacity: .7; }
+
+  .grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-auto-flow: dense;
+    gap: 16px;
+  }
+  .grid-item { display: flex; }
+  .grid-item.featured { grid-row: span 2; }
+  .grid-item[hidden] { display: none; }
+  .grid-item .card { width: 100%; }
+  .card-featured { flex-direction: column; padding: 0; overflow: hidden; gap: 0; }
+  .card-shot {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .card-row { display: flex; gap: 14px; align-items: flex-start; }
+  .card-featured .card-row { padding: 18px; }
+  @media (max-width: 560px) {
+    .grid-item.featured { grid-row: auto; }
+  }
+
+  /* SPOTLIGHT */
+  .spot-wrap { padding-top: 72px; padding-bottom: 56px; }
+  .spot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+    padding: 48px;
+    border-radius: var(--radius);
+    background: var(--lime);
+    color: var(--on-lime);
+    overflow: hidden;
+  }
+  .spot-copy { flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+  .spot-eyebrow { font-weight: 700; font-size: 15px; }
+  .spot-title { font-size: clamp(48px, 7vw, 96px); line-height: .88; }
+  .spot-text { font-size: 18px; line-height: 1.55; max-width: 520px; }
+  .spot-actions { display: flex; align-items: center; gap: 14px; margin-top: 8px; flex-wrap: wrap; }
+  .spot-actions img { width: 56px; height: 56px; border-radius: 12px; }
+  .spot-play { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; min-height: 44px; display: inline-flex; align-items: center; }
+  .spot-show { flex: 1 1 240px; display: flex; justify-content: center; }
+  .phone-tilt { width: 230px; padding: 9px; border-radius: 36px; background: #0E0F13; transform: rotate(4deg); }
+  .phone-tilt img { border-radius: 28px; }
+  @media (max-width: 560px) { .spot { padding: 28px; } }
+
+  /* PRINCIPLES */
+  .principles-wrap { padding-top: 72px; padding-bottom: 96px; }
+  .section-title { font-size: clamp(40px, 5vw, 64px); margin-bottom: 40px; }
+  .principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+  .principle {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 4px solid var(--line);
+  }
+  .principle.first { border-top-color: var(--fg); }
+  .principle-n { font-family: var(--f-display); font-weight: 800; font-size: 44px; line-height: 1; }
+  .principle h3 { font-size: 21px; font-weight: 700; line-height: 1.25; }
+  .principle p { font-size: 16px; line-height: 1.55; }
+  @media (max-width: 900px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .principles { grid-template-columns: 1fr; } }
+
+  /* STUDIO */
+  .studio-band { background: var(--surface); border-top: 1px solid var(--line); }
+  .studio { display: flex; flex-wrap: wrap; gap: 48px; padding-top: 96px; padding-bottom: 96px; }
+  .studio-title { flex: 1 1 380px; font-size: clamp(48px, 6vw, 80px); }
+  .studio-copy { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+  .studio-copy p { font-size: 19px; line-height: 1.65; }
+  .strip { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .strip img { width: 48px; height: 48px; border-radius: 11px; }
+
+  /* CONTACT */
+  .contact-band { background: var(--surface-2); border-top: 1px solid var(--line); }
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+  .contact-eyebrow { font-weight: 600; font-size: 15px; }
+  .contact-title { font-size: clamp(40px, 5vw, 64px); line-height: .92; max-width: 900px; }
+</style>
